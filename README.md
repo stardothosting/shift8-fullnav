@@ -31,7 +31,7 @@ Since every theme is different, its possible that you may have to "hide" the exi
 
 ### How can I style the markup? 
 
-The markup is dynamically generated based on your design choices made in the administrative options. You can re-declare some of the classes in your theme's stylesheet. This plugin may be modified to include additional options down the line.
+Key elements of the markup is dynamically generated based on your design choices made in the administrative options. You can re-declare some of the classes in your theme's stylesheet. This plugin may be modified to include additional options down the line. 
 
 ### What else have you done?
 
