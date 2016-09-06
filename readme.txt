@@ -48,9 +48,9 @@ We do [web design](https://www.shift8web.ca "Toronto Web Design") , development 
 
 == Screenshots ==
 
-1. This is the options page where you define the design and other options for the navigation menu
-2. This is an example of how the menu looks on a desktop
-3. This is an example of how the menu looks on a mobile device, with the menu extended.
+1. This is an example of how the menu looks on a desktop
+2. This is an example of how the menu looks on mobile with the menu not extended.
+3. This is an example of how the menu looks on mobile with the menu extended
 
 == Changelog ==
 
