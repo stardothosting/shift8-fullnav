@@ -1,5 +1,4 @@
 jQuery(document).ready(function() {
-console.log('test');
 	// Opacity range sliders
 	jQuery('#barTra').on('input', function() {
 		jQuery('#barTraFilter').css('opacity', jQuery(this).val());
