@@ -26,6 +26,10 @@ function shift8_fullnav_scripts() {
 	$shift8_fullnav_ovr_font = (esc_attr( get_option('shift8_fullnav_ovr_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_ovr_font') ), 2));
 	$shift8_fullnav_ovr_font_color = esc_attr( get_option('shift8_fullnav_ovr_font_col') );
 
+	// Fix if its an array 
+	$shift8_fullnav_bar_font = (is_array($shift8_fullnav_bar_font) ? "'" . $shift8_fullnav_bar_font[0] . "'" : $shift8_fullnav_bar_font);
+	$shift8_fullnav_ovr_font = (is_array($shift8_fullnav_ovr_font) ? "'" . $shift8_fullnav_ovr_font[0] . "'" : $shift8_fullnav_ovr_font);
+
         $shift8_fullnav_custom_css = "
                 .fn-header {
                         background-color: {$shift8_fullnav_bar_color};
@@ -34,7 +38,7 @@ function shift8_fullnav_scripts() {
 			background-color: {$shift8_fullnav_ovr_color};	
 		}
 		.fn-secondary-nav a, .fn-menu-text {
-			font-family: '{$shift8_fullnav_bar_font[0]}';
+			font-family: {$shift8_fullnav_bar_font};
 			color : {$shift8_fullnav_bar_font_color};
 		}
 		.fn-primary-nav-trigger {
@@ -47,7 +51,7 @@ function shift8_fullnav_scripts() {
 			background-color: transparent;
 		}
 		.fn-primary-nav a {
-			font-family: '{$shift8_fullnav_ovr_font[0]}';
+			font-family: {$shift8_fullnav_ovr_font};
 			color : {$shift8_fullnav_ovr_font_color};
 		}
 		.shift8-social {
