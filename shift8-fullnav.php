@@ -146,7 +146,7 @@ function shift8_fullnav_settings_page() {
 ?>
 <div class="wrap">
 <h2>Shift8 Full Nav Settings</h2>
-
+<?php if (is_admin()) { ?>
 <form method="post" action="options.php">
     <?php settings_fields( 'shift8-fullnav-settings-group' ); ?>
     <?php do_settings_sections( 'shift8-fullnav-settings-group' ); ?>
@@ -271,6 +271,7 @@ function shift8_fullnav_settings_page() {
 </form>
 </div>
 <?php 
+	} // is_admin
 }
 
 // Inject menu system in header
