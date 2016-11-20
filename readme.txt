@@ -34,6 +34,10 @@ e.g.
 
 Try disabling any other plugins that may be conflicting. Also take a look at inspect element in your browser and confirm if there are any javascript errors in the console. g
 
+= Can I see what it looks like live? =
+
+You can check out our wordpress hosting website to see it in action : https://www.stackstar.com
+
 = How can I style the markup? =
 
 The idea was to make design options available in the administrative interface of the plugin settings. The design options, when chosen, generate inline style markup that applies the styling. There is a stylesheet that imports other common styling elements. You can overwrite anything in your own theme's stylesheet.

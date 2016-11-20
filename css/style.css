@@ -13,7 +13,7 @@
 
 .fn-container {
   width: 90%;
-  max-width: 768px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -205,7 +205,7 @@
 }
 
 /* responsive */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 980px) {
   .fn-header {
     height: 80px;
     box-shadow: none;
@@ -239,12 +239,12 @@
     transform: translate3d(0, 100%, 0);
   } 
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 980px) {
   .fn-logo {
     left: 2.6em;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 980px) {
   .fn-secondary-nav {
     display: none;
   }
@@ -252,7 +252,7 @@
     dispaly:block;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 980px) {
   .fn-primary-nav-trigger {
     display: none;
     width: 100px;
@@ -282,7 +282,7 @@
     transform: translateX(0) translateY(-50%);
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 980px) {
   .fn-primary-nav {
     padding: 80px 0;
   }
@@ -297,7 +297,7 @@
     font-size: 1rem;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 980px) {
   .fn-intro h1 {
     font-size: 30px;
     font-size: 1.875rem;
