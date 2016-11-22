@@ -3,7 +3,7 @@
  * Plugin Name: Shift8 Full Nav
  * Plugin URI: https://github.com/stardothosting/shift8-fullnav
  * Description: This plugin adds a sticky menu to your site. When the menu is clicked it expands to the full screen
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Shift8 Web 
  * Author URI: https://www.shift8web.ca
  * License: GPLv3
@@ -283,7 +283,7 @@ function add_shift8_fullnav_menu() {
         $menu_array = wp_get_nav_menu_items($menu_id);
 
 	echo '<header class="fn-header is-visible is-fixed">
-	<div class="fn-logo"><a href="#0"><img src="' . esc_attr( get_option('shift8_fullnav_logo')) . '" alt="Logo"></a></div>
+	<div class="fn-logo"><a href="' . get_site_url() . '"><img src="' . esc_attr( get_option('shift8_fullnav_logo')) . '" alt="Logo"></a></div>
 	<a class="fn-primary-nav-trigger" href="#0">
 	<span class="fn-menu-text">Menu</span><span class="fn-menu-icon"></span>
 	</a> 
