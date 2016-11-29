@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.5.2
-* Stable tag: 1.02
+* Stable tag: 1.05
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -54,3 +54,12 @@ You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to se
 
 ### 1.02
 * Fixed bug with inherit font logic
+
+### 1.03
+* Adjusted breakpoint for mobile menu from 768px to 980px
+
+### 1.04
+* Fixed header logo linking to site url
+
+### 1.05
+* Added option to force mobile mode of menu all the time so only the hamburger icon will display

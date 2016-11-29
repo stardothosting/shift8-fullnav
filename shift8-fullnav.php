@@ -3,7 +3,7 @@
  * Plugin Name: Shift8 Full Nav
  * Plugin URI: https://github.com/stardothosting/shift8-fullnav
  * Description: This plugin adds a sticky menu to your site. When the menu is clicked it expands to the full screen
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Shift8 Web 
  * Author URI: https://www.shift8web.ca
  * License: GPLv3
@@ -29,6 +29,20 @@ function shift8_fullnav_scripts() {
 	// Fix if its an array 
 	$shift8_fullnav_bar_font = (is_array($shift8_fullnav_bar_font) ? "'" . $shift8_fullnav_bar_font[0] . "'" : $shift8_fullnav_bar_font);
 	$shift8_fullnav_ovr_font = (is_array($shift8_fullnav_ovr_font) ? "'" . $shift8_fullnav_ovr_font[0] . "'" : $shift8_fullnav_ovr_font);
+
+	// Force mobile menu if option is enabled
+        if (esc_attr( get_option('shift8_fullnav_mobilemode') ) == 'on') {
+                $shift8_fullnav_mobileonly_css = "
+                        .fn-secondary-nav {
+                                display:none !important;
+                        }
+                        .fn-primary-nav-trigger {
+                                display: inline-block !important;
+                        }
+                ";
+        } else {
+                $shift8_fullnav_mobileonly_css = null;
+        }
 
         $shift8_fullnav_custom_css = "
                 .fn-header {
@@ -57,7 +71,9 @@ function shift8_fullnav_scripts() {
 		.shift8-social {
 			color: {$shift8_fullnav_ovr_font_color};
 		}
+		" . $shift8_fullnav_mobileonly_css . "
         ";
+
 	wp_add_inline_style( 'shift8-fullnav-style', $shift8_fullnav_custom_css );
 }
 /* Google Fonts */
@@ -106,6 +122,7 @@ add_action( 'admin_enqueue_scripts', 'load_shift8_fullnav_wp_admin_style' );
 function register_shift8_fullnav_settings() {
 	//register our settings
 	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_enabled' );
+	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_mobilemode' );
 	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_logo' );
 	// options for menu fonts
 	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_bar_font' );
@@ -174,6 +191,22 @@ function shift8_fullnav_settings_page() {
                 <div class="slider round"></div>
                 </label>
 	</td>
+	</tr>
+	<tr valign="top">
+        <td>Enable Mobile Mode : </td>
+        <td>
+        <?php
+        if (esc_attr( get_option('shift8_fullnav_mobilemode') ) == 'on') {
+                $mobile_enabled_checked = "checked";
+        } else {
+                $mobile_enabled_checked = "";
+        }
+        ?>
+                <label class="switch">
+                <input type="checkbox" name="shift8_fullnav_mobilemode" <?php echo $mobile_enabled_checked; ?>>
+                <div class="slider round"></div>
+                </label>
+        </td>
 	</th>
 	</tr>
         <tr valign="top">
