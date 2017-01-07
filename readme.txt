@@ -16,6 +16,13 @@ This plugin implements a very simple and clean sticky navigation bar. The naviga
 
 There are planned features for future releases such as dropdown effects for second level menu options. This plugin is based on the full screen pop out navigation by [Codyhouse](https://codyhouse.co/gem/full-screen-pop-out-navigation/).
 
+= Want to see the plugin in action? =
+
+You can view two example sites where this plugin is live : 
+
+* Example Site 1 : [Wordpress Hosting](https://www.stackstar.com)
+* Example Site 2 : [Web Design](https://www.shift8web.ca)
+
 = Features =
 
 * Customizable mobile breakpoint
@@ -36,7 +43,7 @@ You can change the color and opacity of the menu bar as well as the mobile flyou
 * Dropdown functionality out of the box
 If you have parent/child menu items, they will be automatically rendered as dropdown for mobile/desktop view of the menu. You can change color and styling of the dropdown for desktop as well
 
-* Remember : Dont forget to set the switch "Enable Full Nav" after installing and activating!
+**Remember : Dont forget to set the switch "Enable Full Nav" after installing and activating!**
 
 == Installation ==
 

@@ -10,6 +10,13 @@
 
 Plugin that integrates a sticky navigation bar that expands to the full screen when open.
 
+## Want to see the plugin in action?
+
+You can view two example sites where this plugin is live :
+
+- Example Site 1 : [Wordpress Hosting](https://www.stackstar.com "Wordpress Hosting")
+- Example Site 2 : [Web Design](https://www.shift8web.ca "Web Design in Toronto")
+
 ## Features 
 
 - Customizable mobile breakpoint
@@ -31,7 +38,6 @@ You can change the color and opacity of the menu bar as well as the mobile flyou
 If you have parent/child menu items, they will be automatically rendered as dropdown for mobile/desktop view of the menu. You can change color and styling of the dropdown for desktop as well
 
 ## Remember : Dont forget to set the switch "Enable Full Nav" after installing and activating!
-
 
 ## Installation 
 
