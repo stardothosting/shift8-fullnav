@@ -5,21 +5,33 @@ function shift8_fullnav_scripts() {
         // pop out nav
         wp_enqueue_style( 'shift8-fullnav-style', plugin_dir_url(dirname(__FILE__)) . 'css/style.css');
         wp_enqueue_script( 'shift8-fullnav-modern', plugin_dir_url(dirname(__FILE__)) . 'js/modernizr.js', array(), true );
+	wp_enqueue_script( 'shift8_fullnav_main', plugin_dir_url(dirname(__FILE__)) . 'js/main.js', array(), true );
         // font awesome
         wp_enqueue_style( 'font-awesome-real', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 
         // Build inline style for menu based on administrative options chosen
         $shift8_fullnav_bar_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_bar_col') ), $opacity = esc_attr( get_option('shift8_fullnav_design_bar_tra')));
         $shift8_fullnav_ovr_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_ovr_col') ), $opacity = esc_attr( get_option('shift8_fullnav_design_ovr_tra')));
+        $shift8_fullnav_drp_color = esc_attr( get_option('shift8_fullnav_design_drp_bak') );
+        $shift8_fullnav_drp_hover_color = esc_attr( get_option('shift8_fullnav_design_drp_hvr') );
+
         // Load google fonts if necessary
         $shift8_fullnav_bar_font = (esc_attr( get_option('shift8_fullnav_bar_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_bar_font') ), 2));
         $shift8_fullnav_bar_font_color = esc_attr( get_option('shift8_fullnav_bar_font_col') );
+        $shift8_fullnav_bar_font_size = esc_attr( get_option('shift8_fullnav_bar_font_siz') );
+
         $shift8_fullnav_ovr_font = (esc_attr( get_option('shift8_fullnav_ovr_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_ovr_font') ), 2));
         $shift8_fullnav_ovr_font_color = esc_attr( get_option('shift8_fullnav_ovr_font_col') );
+        $shift8_fullnav_ovr_font_size = esc_attr( get_option('shift8_fullnav_ovr_font_siz') );
+
+        $shift8_fullnav_drp_font = (esc_attr( get_option('shift8_fullnav_drp_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_ovr_font') ), 2));
+        $shift8_fullnav_drp_font_color = esc_attr( get_option('shift8_fullnav_drp_font_col') );
+        $shift8_fullnav_drp_font_size = esc_attr( get_option('shift8_fullnav_drp_font_siz') );
 
         // Fix if its an array
         $shift8_fullnav_bar_font = (is_array($shift8_fullnav_bar_font) ? "'" . $shift8_fullnav_bar_font[0] . "'" : $shift8_fullnav_bar_font);
         $shift8_fullnav_ovr_font = (is_array($shift8_fullnav_ovr_font) ? "'" . $shift8_fullnav_ovr_font[0] . "'" : $shift8_fullnav_ovr_font);
+        $shift8_fullnav_drp_font = (is_array($shift8_fullnav_drp_font) ? "'" . $shift8_fullnav_drp_font[0] . "'" : $shift8_fullnav_drp_font);
 
         // Force mobile menu if option is enabled
         if (esc_attr( get_option('shift8_fullnav_mobilemode') ) == 'on') {
@@ -33,6 +45,7 @@ function shift8_fullnav_scripts() {
                 ";
         } else {
                 $shift8_fullnav_mobileonly_css = null;
+		$shift8_fullnav_mobilebreak = esc_attr( get_option('shift8_fullnav_mobilebreak') );
         }
 
         $shift8_fullnav_custom_css = "
@@ -44,6 +57,7 @@ function shift8_fullnav_scripts() {
                 }
                 .fn-secondary-nav a, .fn-menu-text {
                         font-family: {$shift8_fullnav_bar_font};
+			font-size: {$shift8_fullnav_bar_font_size}px;
                         color : {$shift8_fullnav_bar_font_color};
                 }
                 .fn-primary-nav-trigger {
@@ -57,11 +71,116 @@ function shift8_fullnav_scripts() {
                }
                 .fn-primary-nav a {
                         font-family: {$shift8_fullnav_ovr_font};
+			font-size: {$shift8_fullnav_ovr_font_size}px;
                         color : {$shift8_fullnav_ovr_font_color};
                 }
+		.fn-dropdown-content a {
+			font-family: {$shift8_fullnav_drp_font};
+			font-size: {$shift8_fullnav_drp_font_size}px;
+			color: {$shift8_fullnav_drp_font_color};
+		}
+		.fn-dropdown-content { 
+			background-color: {$shift8_fullnav_drp_color};
+		}
+		.fn-dropdown-content a:hover { 
+			background-color: {$shift8_fullnav_drp_hover_color};
+		}
                 .shift8-social {
                         color: {$shift8_fullnav_ovr_font_color};
                 }
+
+		/* responsive */
+		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {
+			.fn-header {
+				height: 80px;
+				box-shadow: none;
+			}
+		}
+
+		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {
+			.fn-header {
+				-webkit-transition: background-color 0.3s;
+				-moz-transition: background-color 0.3s;
+				transition: background-color 0.3s;
+				-webkit-transform: translate3d(0, 0, 0);
+				-moz-transform: translate3d(0, 0, 0);
+				-ms-transform: translate3d(0, 0, 0);
+				-o-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+				-webkit-backface-visibility: hidden;
+				backface-visibility: hidden;
+			}
+			.fn-header.is-fixed {
+				position: fixed;
+				top: -80px;
+				-webkit-transition: -webkit-transform 0.3s;
+				-moz-transition: -moz-transform 0.3s;
+				transition: transform 0.3s;
+			}
+			.fn-header.is-visible {
+				-webkit-transform: translate3d(0, 100%, 0);
+				-moz-transform: translate3d(0, 100%, 0);
+				-ms-transform: translate3d(0, 100%, 0);
+				-o-transform: translate3d(0, 100%, 0);
+				transform: translate3d(0, 100%, 0);
+			}
+		}
+
+		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {
+			.fn-logo {
+				left: 2.6em;
+			}
+		}
+
+		@media only screen and (max-width: {$shift8_fullnav_mobilebreak}px) {
+			.fn-secondary-nav {
+				display: none;
+			}
+			.fn-primary-nav-trigger, .fn-primary-nav-trigger .fn-menu-text {
+				dispaly:block;
+			}
+		}
+
+		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {
+			.fn-primary-nav-trigger {
+				display: none;
+				width: 100px;
+				padding-left: 1em;
+				background-color: transparent;
+				height: 30px;
+				line-height: 30px;
+				right: 2.2em;
+				top: 50%;
+				bottom: auto;
+				-webkit-transform: translateY(-50%);
+				-moz-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				-o-transform: translateY(-50%);
+				transform: translateY(-50%);
+			}
+			.fn-primary-nav-trigger .fn-menu-icon {
+				left: auto;
+				right: 0.6em;
+				-webkit-transform: translateX(0) translateY(-50%);
+				-moz-transform: translateX(0) translateY(-50%);
+				-ms-transform: translateX(0) translateY(-50%);
+				-o-transform: translateX(0) translateY(-50%);
+				transform: translateX(0) translateY(-50%);
+			}
+		}
+
+		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {
+			.fn-primary-nav {
+				padding: 80px 0;
+			}
+		}
+
+		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {
+			.fn-intro h1 {
+				font-size: 30px;
+				font-size: 1.875rem;
+			}
+		}
                 " . $shift8_fullnav_mobileonly_css . "
         ";
 

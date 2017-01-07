@@ -33,6 +33,10 @@ Since every theme is different, its possible that you may have to "hide" the exi
 
 Key elements of the markup is dynamically generated based on your design choices made in the administrative options. You can re-declare some of the classes in your theme's stylesheet. This plugin may be modified to include additional options down the line. 
 
+### How do I get the dropdown options to work?
+
+You simply need to add second level (only) options in the Wordpress menu section
+
 ### What else have you done?
 
 You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to see! :)
@@ -63,3 +67,12 @@ You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to se
 
 ### 1.05
 * Added option to force mobile mode of menu all the time so only the hamburger icon will display
+
+### 1.06 
+* Fixed z-index conflict with shift8-portfolio plugin
+
+### 1.07
+* Fixed main.js loading error
+* Added fully customizable dropdown capability for menu options in non-mobile mode
+* Added option to define mobile breakpoint for when the menu switches to mobile mode
+* Added option to define font sizes for menu bar, overlay and dropdown

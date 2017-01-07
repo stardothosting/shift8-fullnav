@@ -81,6 +81,9 @@ function shift8_fullnav_settings_page() {
 	</th>
 	</tr>
         <tr valign="top">
+        <td>Screen width mobile breakpoint : </td><td><input size="6" type="text" name="shift8_fullnav_mobilebreak" value="<?php echo esc_attr( get_option('shift8_fullnav_mobilebreak') ); ?>" /> (px)</td>
+        </tr>
+        <tr valign="top">
         <th scope="row">Menu Bar Logo</th>
 	</tr>
 	<tr valign="top">
@@ -114,6 +117,10 @@ function shift8_fullnav_settings_page() {
 	</td>
         </tr>
         <tr valign="top">
+        <td>Menu Bar Font Size : </td><td><input size="6" type="text" name="shift8_fullnav_bar_font_siz" value="<?php echo esc_attr( get_option('shift8_fullnav_bar_font_siz') ); ?>" /> (px)</td>
+        </tr>
+	<tr valign="top"><td><div class="font-option-divider"></div></td></tr>
+        <tr valign="top">
         <td>Menu Overlay Font color : </td><td><input type="text" name="shift8_fullnav_ovr_font_col" value="<?php echo esc_attr( get_option('shift8_fullnav_ovr_font_col') ); ?>" class="fullnav-color-field" data-default-color="#252525" /></td>
         </tr>
         <tr valign="top">
@@ -133,7 +140,32 @@ function shift8_fullnav_settings_page() {
 		</div>
         </td>
         </tr>
-         
+        <td>Menu Overlay Font Size : </td><td><input size="6" type="text" name="shift8_fullnav_ovr_font_siz" value="<?php echo esc_attr( get_option('shift8_fullnav_ovr_font_siz') ); ?>" /> (px)</td>
+        </tr>
+        <tr valign="top"><td><div class="font-option-divider"></div></td></tr>
+                <tr valign="top">
+        <td>Menu Dropdown Font Color :</td><td><input type="text" name="shift8_fullnav_drp_font_col" value="<?php echo esc_attr( get_option('shift8_fullnav_drp_font_col') ); ?>" class="fullnav-color-field" data-default-color="#252525" /></td>
+        </tr>
+        <tr valign="top">
+        <td>Menu Dropdown Font : </td>
+        <td>
+                <div class="shift8-fullnav-select">
+                <select name="shift8_fullnav_drp_font">
+                        <option>Site default font</option>
+                        <?php
+                                foreach ($fullnav_google_fonts as $fullnav_google_font) {
+                                        $fullnav_google_font_item = esc_attr( $fullnav_google_font->family ) . ":" . implode(',', $fullnav_google_font->variants );
+                                        $selected = ($fullnav_google_font_item == get_option('shift8_fullnav_drp_font') ? 'selected' : '');
+                                        echo "<option value='" . $fullnav_google_font_item . "' " . $selected . ">" . esc_attr( $fullnav_google_font->family ) . "</option>";
+                                }
+                        ?>
+                </select>
+                </div>
+        </td>
+        </tr>
+        <tr valign="top">
+        <td>Menu Dropdown Font Size : </td><td><input size="6" type="text" name="shift8_fullnav_drp_font_siz" value="<?php echo esc_attr( get_option('shift8_fullnav_drp_font_siz') ); ?>" /> (px)</td>
+        </tr>
         <tr valign="top">
         <th scope="row">Design Options</th>
 	</tr>
@@ -148,6 +180,12 @@ function shift8_fullnav_settings_page() {
 	</tr>
 	<tr valign="top">
         <td>Overlay transparency : </td><td><div id="ovrTraFilter" style="background-color:<?php echo esc_attr( get_option('shift8_fullnav_design_ovr_col') ); ?>"></div><div id="ovrTraSlider"><input id="ovrTra" type="range" name="shift8_fullnav_design_ovr_tra" value="<?php echo esc_attr( get_option('shift8_fullnav_design_ovr_tra') ); ?>" max="1.0" min="0" step="0.01"/></div></td>
+        </tr>
+        <tr valign="top">
+        <td>Menu Dropdown Color :</td><td><input type="text" name="shift8_fullnav_design_drp_bak" value="<?php echo esc_attr( get_option('shift8_fullnav_design_drp_bak') ); ?>" class="fullnav-color-field" data-default-color="#252525" /></td>
+        </tr>
+        <tr valign="top">
+        <td>Menu Dropdown Hover Color :</td><td><input type="text" name="shift8_fullnav_design_drp_hvr" value="<?php echo esc_attr( get_option('shift8_fullnav_design_drp_hvr') ); ?>" class="fullnav-color-field" data-default-color="#666666" /></td>
         </tr>
         
         <tr valign="top">

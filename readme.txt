@@ -46,6 +46,10 @@ The idea was to make design options available in the administrative interface of
 
 We plan on implementing a built-in dropdown feature for hierarchical menu options (2nd and 3rd level menu options). Currently this functionality is not built in.
 
+= How do I get the dropdown options to work? =
+
+You simply need to add second level (only) options in the Wordpress menu section
+
 = What else have you done? =
 
 We do [web design](https://www.shift8web.ca "Toronto Web Design") , development and [web hosting](https://www.stackstar.com)! :)
@@ -80,3 +84,9 @@ We do [web design](https://www.shift8web.ca "Toronto Web Design") , development 
 
 = 1.06 =
 * Fixed z-index conflict with shift8-portfolio plugin
+
+= 1.07 =
+* Fixed main.js loading error
+* Added fully customizable dropdown capability for menu options in non-mobile mode
+* Added option to define mobile breakpoint for when the menu switches to mobile mode
+* Added option to define font sizes for menu bar, overlay and dropdown

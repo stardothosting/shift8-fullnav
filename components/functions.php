@@ -15,44 +15,45 @@ function add_shift8_fullnav_menu() {
         </a>
         <nav>
         <ul class="fn-secondary-nav">';
-
 	$count = 0;
 	$submenu = false;
-        foreach ($menu_array as $menu_item) {
+	foreach( $menu_array as $item ) {
+		$link = $item->url;
+		$title = $item->title;
 		// item does not have a parent so menu_item_parent equals 0 (false)
-		if ( !$menu_item->menu_item_parent ) {
+		if ( !$item->menu_item_parent ){
 			// save this id for later comparison with sub-menu items
-			$parent_id = $menu_item->ID;
-			?>
-			<li class="dropdown"><a href="<?php echo $menu_item->url; ?>" class="title"><?php echo $menu_item->title; ?></a>
-			<?php
-		} 
-		
-		if ( $parent_id == $menu_item->menu_item_parent ) {  ?>
-			<?php if ( !$submenu ) {
-				$submenu = true; ?>
-				<ul class="dropdown-content">
-			<?php } ?>
-			<li><a href="<?php echo $menu_item->url; ?>" class="title"><?php echo $menu_item->title; ?></a>
-			<?php if ( $menu_array[ $count + 1 ]->menu_item_parent != $parent_id && $submenu ) { ?>
-		            	</ul>
-		            	<?php $submenu = false; 
-			} ?>
+			$parent_id = $item->ID;
+			echo '<li class="fn-dropdown">
+			<a href="' .  $link . '" class="title">
+			' . $title . '
+			</a>';
+		}
 
-        <?php } ?>
+		if ( $parent_id == $item->menu_item_parent ) {
+			if ( !$submenu ) { 
+				$submenu = true; 
+				echo '<ul class="fn-dropdown-content">';
+			}
+			echo '<li>
+			<a href="' . $link . '" class="title">' . $title . '</a>
+                	</li>';
 
-		<?php if ( $menuitems[ $count + 1 ]->menu_item_parent != $parent_id ) { ?>
-			</li>
-		    <?php $submenu = false; 
-		} ?>
+			if ( $menu_array[ $count + 1 ]->menu_item_parent != $parent_id && $submenu ) {
+				echo '</ul>';
+				$submenu = false;
+			}
+		}
 
-		<?php $count++; 
-	} 
+		if ( $menu_array[ $count + 1 ]->menu_item_parent != $parent_id ) { 
+			echo '</li>';
+			$submenu = false;
+		}
+		$count++;  
+	}
 
-        echo '</ul>
-        </nav>
-        </header>
-        ';
+            echo '</ul></nav></header>';
+
         echo '<nav>
         <ul class="fn-primary-nav">';
 
@@ -69,7 +70,6 @@ function add_shift8_fullnav_menu() {
         echo $social_twitter . $social_facebook . $social_googleplus . $social_instagram . $social_linkedin . '
         </ul>
         </nav>';
-        wp_enqueue_script( 'shift8_fullnav_main', plugin_dir_url( __FILE__ ) . 'js/main.js', array(), true );
 }
 // Convert hexdec color string to rgb(a) string
 function hex2rgba($color, $opacity = false) {
