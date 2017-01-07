@@ -15,7 +15,7 @@ Plugin that integrates a sticky navigation bar that expands to the full screen w
 You can view two example sites where this plugin is live :
 
 - Example Site 1 : [Wordpress Hosting](https://www.stackstar.com "Wordpress Hosting")
-- Example Site 2 : [Web Design](https://www.shift8web.ca "Web Design in Toronto")
+- Example Site 2 : [Web Design in Toronto](https://www.shift8web.ca "Web Design in Toronto")
 
 ## Features 
 
