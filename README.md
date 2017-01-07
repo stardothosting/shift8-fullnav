@@ -90,3 +90,6 @@ You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to se
 
 ### 1.11
 * Implemented dropdown logic for mobile overlay menu (triangle for menu options that have sub nav children)
+
+### 1.12
+* Fixed bug in mobile dropdown logic for triangle direction change

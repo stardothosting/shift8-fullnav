@@ -75,12 +75,12 @@ function add_shift8_fullnav_menu() {
                                 echo '</ul>';
 				echo '<script>
 					jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . '").click( function() {
-						if (jQuery("#fn-arrow-dropdown").hasClass("fn-arrow-down")) {
-							jQuery("#fn-arrow-dropdown").removeClass("fn-arrow-down");
-							jQuery("#fn-arrow-dropdown").addClass("fn-arrow-up");
+						if (jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . ' #fn-arrow-dropdown").hasClass("fn-arrow-down")) {
+							jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . ' #fn-arrow-dropdown").removeClass("fn-arrow-down");
+							jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . ' #fn-arrow-dropdown").addClass("fn-arrow-up");
 						} else {
-                                                        jQuery("#fn-arrow-dropdown").removeClass("fn-arrow-up");
-                                                        jQuery("#fn-arrow-dropdown").addClass("fn-arrow-down");
+                                                        jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . ' #fn-arrow-dropdown").removeClass("fn-arrow-up");
+                                                        jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . ' #fn-arrow-dropdown").addClass("fn-arrow-down");
 						}
 						jQuery(".fn-mobile-dropdown-content-' . $mparent_id . '").slideToggle();
 					});
