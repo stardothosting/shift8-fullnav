@@ -12,20 +12,20 @@ function shift8_fullnav_scripts() {
         // Build inline style for menu based on administrative options chosen
         $shift8_fullnav_bar_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_bar_col') ), $opacity = esc_attr( get_option('shift8_fullnav_design_bar_tra')));
         $shift8_fullnav_ovr_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_ovr_col') ), $opacity = esc_attr( get_option('shift8_fullnav_design_ovr_tra')));
-        $shift8_fullnav_drp_color = esc_attr( get_option('shift8_fullnav_design_drp_bak') );
-        $shift8_fullnav_drp_hover_color = esc_attr( get_option('shift8_fullnav_design_drp_hvr') );
+        $shift8_fullnav_drp_color = (esc_attr( get_option('shift8_fullnav_design_drp_bak') ) ? esc_attr( get_option('shift8_fullnav_design_drp_bak') ) : 'inherit');
+        $shift8_fullnav_drp_hover_color = (esc_attr( get_option('shift8_fullnav_design_drp_hvr') ) ? esc_attr( get_option('shift8_fullnav_design_drp_hvr') ) : 'inherit');
 
         // Load google fonts if necessary
         $shift8_fullnav_bar_font = (esc_attr( get_option('shift8_fullnav_bar_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_bar_font') ), 2));
-        $shift8_fullnav_bar_font_color = esc_attr( get_option('shift8_fullnav_bar_font_col') );
+        $shift8_fullnav_bar_font_color = (esc_attr( get_option('shift8_fullnav_bar_font_col') ) ? esc_attr( get_option('shift8_fullnav_bar_font_col') ) : 'inherit');
         $shift8_fullnav_bar_font_size = ( esc_attr( get_option('shift8_fullnav_bar_font_siz') ) ? esc_attr( get_option('shift8_fullnav_bar_font_siz') ) . 'px' : 'inherit');
 
         $shift8_fullnav_ovr_font = (esc_attr( get_option('shift8_fullnav_ovr_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_ovr_font') ), 2));
-        $shift8_fullnav_ovr_font_color = esc_attr( get_option('shift8_fullnav_ovr_font_col') );
+        $shift8_fullnav_ovr_font_color = (esc_attr( get_option('shift8_fullnav_ovr_font_col') ) ? esc_attr( get_option('shift8_fullnav_ovr_font_col') ) : 'inherit');
         $shift8_fullnav_ovr_font_size = ( esc_attr( get_option('shift8_fullnav_ovr_font_siz') ) ? esc_attr( get_option('shift8_fullnav_ovr_font_siz') ) . 'px' : 'inherit');
 
         $shift8_fullnav_drp_font = (esc_attr( get_option('shift8_fullnav_drp_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_drp_font') ), 2));
-        $shift8_fullnav_drp_font_color = esc_attr( get_option('shift8_fullnav_drp_font_col') );
+        $shift8_fullnav_drp_font_color = (esc_attr( get_option('shift8_fullnav_drp_font_col') ) ? esc_attr( get_option('shift8_fullnav_drp_font_col') ) : 'inherit');
         $shift8_fullnav_drp_font_size = ( esc_attr( get_option('shift8_fullnav_drp_font_siz') ) ? esc_attr( get_option('shift8_fullnav_drp_font_siz') ) . 'px' : 'inherit');
 
         // Fix if its an array

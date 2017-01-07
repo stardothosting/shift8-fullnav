@@ -84,3 +84,6 @@ You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to se
 
 ### 1.09
 * Fixed padding for dropdown menu options
+
+### 1.10
+* Set default color to inherit if no color is defined to avoid CSS errors
