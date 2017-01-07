@@ -171,6 +171,7 @@
   -moz-osx-font-smoothing: grayscale !important;
   margin: .2em 0 !important;
   text-transform: capitalize !important;
+  list-style:none;
 }
 .fn-primary-nav a {
     padding: .4em 1em;
@@ -231,6 +232,9 @@
     margin:0 !important;
     padding: 0;
 }
+.fn-mobile-dropdown-content {
+    display:none;
+}
 
 /* Links inside the dropdown */
 .fn-dropdown-content li {
@@ -254,6 +258,13 @@
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .fn-dropdown:hover .fn-dropbtn {
     background-color: #3e8e41;
+}
+
+.fn-mobile-dropdown-content {
+    margin: 0 0 1.75em;
+}
+.fn-mobile-dropdown-content li {
+    padding:0;
 }
 
 /* responsive */

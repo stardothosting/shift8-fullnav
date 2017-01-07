@@ -88,6 +88,24 @@ function shift8_fullnav_scripts() {
                 .shift8-social {
                         color: {$shift8_fullnav_ovr_font_color};
                 }
+		.fn-arrow-up {
+			width: 0;
+			height: 0;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-bottom: 8px solid {$shift8_fullnav_ovr_font_color};
+			position:absolute;
+			margin-top:10px;
+		}
+		.fn-arrow-down {
+			width: 0;
+			height: 0;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-top: 8px solid {$shift8_fullnav_ovr_font_color};
+			position:absolute;
+			margin-top:10px;
+		}
 
 		/* responsive */
 		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {

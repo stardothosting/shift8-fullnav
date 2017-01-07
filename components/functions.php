@@ -57,8 +57,43 @@ function add_shift8_fullnav_menu() {
         echo '<nav>
         <ul class="fn-primary-nav">';
 
+	$mcount = 0;
+	$msubmenu = false;
         foreach ($menu_array as $menu_item) {
-                echo '<li><a href="' . $menu_item->url . '">' . $menu_item->title . '</a></li>';
+		if (!$menu_item->menu_item_parent) {
+			$mparent_id = $menu_item->ID;
+			echo '<li class="fn-menu-mobile-parent fn-menu-mobile-parent-item-' . $mparent_id .'"><a href="' . $menu_item->url . '">' . $menu_item->title . '</a>';
+		}
+                if ( $mparent_id == $menu_item->menu_item_parent ) {
+                        if ( !$msubmenu ) {
+                                $msubmenu = true;
+                                echo '<span id="fn-arrow-dropdown" class="fn-arrow-down"></span><ul class="fn-mobile-dropdown-content fn-mobile-dropdown-content-' . $mparent_id .'">';
+                        }
+			echo '<li class="fn-menu-child-item fn-menu-child-item-' . $mparent_id .'"><a href="' . $menu_item->url . '">' . $menu_item->title . '</a></li>';
+
+                        if ( $menu_array[ $mcount + 1 ]->menu_item_parent != $mparent_id && $msubmenu ) {
+                                echo '</ul>';
+				echo '<script>
+					jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . '").click( function() {
+						if (jQuery("#fn-arrow-dropdown").hasClass("fn-arrow-down")) {
+							jQuery("#fn-arrow-dropdown").removeClass("fn-arrow-down");
+							jQuery("#fn-arrow-dropdown").addClass("fn-arrow-up");
+						} else {
+                                                        jQuery("#fn-arrow-dropdown").removeClass("fn-arrow-up");
+                                                        jQuery("#fn-arrow-dropdown").addClass("fn-arrow-down");
+						}
+						jQuery(".fn-mobile-dropdown-content-' . $mparent_id . '").slideToggle();
+					});
+					</script>';
+                                $msubmenu = false;
+                        }
+                }
+
+                if ( $menu_array[ $mcount + 1 ]->menu_item_parent != $mparent_id ) {
+                        echo '</li>';
+                        $msubmenu = false;
+                }
+                $mcount++;
         }
 
         // build social icons

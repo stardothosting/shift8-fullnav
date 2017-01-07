@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.5.2
-* Stable tag: 1.10
+* Stable tag: 1.11
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -87,3 +87,6 @@ You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to se
 
 ### 1.10
 * Set default color to inherit if no color is defined to avoid CSS errors
+
+### 1.11
+* Implemented dropdown logic for mobile overlay menu (triangle for menu options that have sub nav children)
