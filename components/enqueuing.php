@@ -18,15 +18,15 @@ function shift8_fullnav_scripts() {
         // Load google fonts if necessary
         $shift8_fullnav_bar_font = (esc_attr( get_option('shift8_fullnav_bar_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_bar_font') ), 2));
         $shift8_fullnav_bar_font_color = esc_attr( get_option('shift8_fullnav_bar_font_col') );
-        $shift8_fullnav_bar_font_size = esc_attr( get_option('shift8_fullnav_bar_font_siz') );
+        $shift8_fullnav_bar_font_size = ( esc_attr( get_option('shift8_fullnav_bar_font_siz') ) ? esc_attr( get_option('shift8_fullnav_bar_font_siz') ) . 'px' : 'inherit');
 
         $shift8_fullnav_ovr_font = (esc_attr( get_option('shift8_fullnav_ovr_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_ovr_font') ), 2));
         $shift8_fullnav_ovr_font_color = esc_attr( get_option('shift8_fullnav_ovr_font_col') );
-        $shift8_fullnav_ovr_font_size = esc_attr( get_option('shift8_fullnav_ovr_font_siz') );
+        $shift8_fullnav_ovr_font_size = ( esc_attr( get_option('shift8_fullnav_ovr_font_siz') ) ? esc_attr( get_option('shift8_fullnav_ovr_font_siz') ) . 'px' : 'inherit');
 
-        $shift8_fullnav_drp_font = (esc_attr( get_option('shift8_fullnav_drp_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_ovr_font') ), 2));
+        $shift8_fullnav_drp_font = (esc_attr( get_option('shift8_fullnav_drp_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_drp_font') ), 2));
         $shift8_fullnav_drp_font_color = esc_attr( get_option('shift8_fullnav_drp_font_col') );
-        $shift8_fullnav_drp_font_size = esc_attr( get_option('shift8_fullnav_drp_font_siz') );
+        $shift8_fullnav_drp_font_size = ( esc_attr( get_option('shift8_fullnav_drp_font_siz') ) ? esc_attr( get_option('shift8_fullnav_drp_font_siz') ) . 'px' : 'inherit');
 
         // Fix if its an array
         $shift8_fullnav_bar_font = (is_array($shift8_fullnav_bar_font) ? "'" . $shift8_fullnav_bar_font[0] . "'" : $shift8_fullnav_bar_font);
@@ -45,7 +45,7 @@ function shift8_fullnav_scripts() {
                 ";
         } else {
                 $shift8_fullnav_mobileonly_css = null;
-		$shift8_fullnav_mobilebreak = esc_attr( get_option('shift8_fullnav_mobilebreak') );
+		$shift8_fullnav_mobilebreak = ( esc_attr( get_option('shift8_fullnav_mobilebreak') ) ? esc_attr( get_option('shift8_fullnav_mobilebreak') ) : '980');
         }
 
         $shift8_fullnav_custom_css = "
@@ -57,7 +57,7 @@ function shift8_fullnav_scripts() {
                 }
                 .fn-secondary-nav a, .fn-menu-text {
                         font-family: {$shift8_fullnav_bar_font};
-			font-size: {$shift8_fullnav_bar_font_size}px;
+			font-size: {$shift8_fullnav_bar_font_size};
                         color : {$shift8_fullnav_bar_font_color};
                 }
                 .fn-primary-nav-trigger {
@@ -71,12 +71,12 @@ function shift8_fullnav_scripts() {
                }
                 .fn-primary-nav a {
                         font-family: {$shift8_fullnav_ovr_font};
-			font-size: {$shift8_fullnav_ovr_font_size}px;
+			font-size: {$shift8_fullnav_ovr_font_size};
                         color : {$shift8_fullnav_ovr_font_color};
                 }
 		.fn-dropdown-content a {
 			font-family: {$shift8_fullnav_drp_font};
-			font-size: {$shift8_fullnav_drp_font_size}px;
+			font-size: {$shift8_fullnav_drp_font_size};
 			color: {$shift8_fullnav_drp_font_color};
 		}
 		.fn-dropdown-content { 

@@ -76,3 +76,8 @@ You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to se
 * Added fully customizable dropdown capability for menu options in non-mobile mode
 * Added option to define mobile breakpoint for when the menu switches to mobile mode
 * Added option to define font sizes for menu bar, overlay and dropdown
+
+### 1.08
+* Fixed bug in inherit logic for dropdown font if set to site default
+* Set default font size if nothing set in admin options (inherit)
+* Set default breakpoint width for mobile if nothing set in admin options (980px)
