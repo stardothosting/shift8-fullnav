@@ -26,21 +26,27 @@ You can view two example sites where this plugin is live :
 = Features =
 
 * Customizable mobile breakpoint
+
 This means that you can customize when the mobile version of the menu "kicks" in. By default it is set to a screen width of 980px
 
 * Mobile mode for all screen sizes
+
 You can set the plugin to "mobile mode" which means the mobile version of the menu will be always displaying
 
 * Definable font styles everywhere
+ 
 You can define the fonts from a list of all google fonts, or inherit the fonts defined in your theme. You can also adjust font size and color.
 
 * Upload your logo
+
 Upload your logo and it will display seamlessly
 
 * Change colors and opacity
+
 You can change the color and opacity of the menu bar as well as the mobile flyout
 
 * Dropdown functionality out of the box
+
 If you have parent/child menu items, they will be automatically rendered as dropdown for mobile/desktop view of the menu. You can change color and styling of the dropdown for desktop as well
 
 **Remember : Dont forget to set the switch "Enable Full Nav" after installing and activating!**
