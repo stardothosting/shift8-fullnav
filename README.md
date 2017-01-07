@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.5.2
-* Stable tag: 1.05
+* Stable tag: 1.09
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,3 +81,6 @@ You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to se
 * Fixed bug in inherit logic for dropdown font if set to site default
 * Set default font size if nothing set in admin options (inherit)
 * Set default breakpoint width for mobile if nothing set in admin options (980px)
+
+### 1.09
+* Fixed padding for dropdown menu options

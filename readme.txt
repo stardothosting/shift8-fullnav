@@ -4,7 +4,7 @@ Donate link: https://www.shift8web.ca
 Tags: sticky navigation, sticky nav, full width nav, sticky menu, full width menu, modal menu, full screen modal menu, full screen modal navigation, full screen nav, css navigation,responsive sticky nav, responsive sticky navigation, responsive sticky menu, responsive menu, responsive nav,responsive,navigation,menu
 Requires at least: 3.0.1
 Tested up to: 4.6.1
-Stable tag: 1.08
+Stable tag: 1.09
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -95,3 +95,6 @@ We do [web design](https://www.shift8web.ca "Toronto Web Design") , development 
 * Fixed bug in inherit logic for dropdown font if set to site default
 * Set default font size if nothing set in admin options (inherit)
 * Set default breakpoint width for mobile if nothing set in admin options (980px)
+  
+= 1.09 =
+* Fixed padding for dropdown menu options
