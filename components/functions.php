@@ -3,9 +3,16 @@
 // Inject menu system in header
 function add_shift8_fullnav_menu() {
         // Build array from primary nav menu
-        $menu_name = 'primary';
+        $locations = get_theme_mod( 'nav_menu_locations' );
+        if (!empty($locations)) {
+            foreach ($locations as $locationId => $menuValue) {
+                if (has_nav_menu($locationId)) {
+                    $shift8_fullnav_menu = $locationId;
+                }
+            }
+        }
         $menu_locations = get_nav_menu_locations();
-        $menu_id = $menu_locations[ $menu_name ] ;
+        $menu_id = $menu_locations[ $shift8_fullnav_menu ] ;
         $menu_array = wp_get_nav_menu_items($menu_id);
 
         echo '<header class="fn-header is-visible is-fixed">
