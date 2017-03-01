@@ -105,11 +105,11 @@ function add_shift8_fullnav_menu() {
         }
 
         // build social icons
-        $social_twitter = (esc_attr( get_option('shift8_fullnav_social_twitter') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_twitter') ) . '"><i class="fa fa-twitter"></i></a></li>' : '');
-        $social_facebook = (esc_attr( get_option('shift8_fullnav_social_facebook') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_facebook') ) . '"><i class="fa fa-facebook"></i></a></li>' : '');
-        $social_googleplus = (esc_attr( get_option('shift8_fullnav_social_googleplus') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_googleplus') ) . '"><i class="fa fa-google-plus"></i></a></li>' : '');
-        $social_linkedin = (esc_attr( get_option('shift8_fullnav_social_linkedin') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_linkedin') ) . '"><i class="fa fa-linkedin"></i></a></li>' : '');
-        $social_instagram = (esc_attr( get_option('shift8_fullnav_social_instagram') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_instagram') ) . '"><i class="fa fa-instagram"></i></a></li>' : '');
+        $social_twitter = (esc_attr( get_option('shift8_fullnav_social_twitter') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_twitter') ) . '" target="_new"><i class="fa fa-twitter"></i></a></li>' : '');
+        $social_facebook = (esc_attr( get_option('shift8_fullnav_social_facebook') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_facebook') ) . '" target="_new"><i class="fa fa-facebook"></i></a></li>' : '');
+        $social_googleplus = (esc_attr( get_option('shift8_fullnav_social_googleplus') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_googleplus') ) . '" target="_new"><i class="fa fa-google-plus"></i></a></li>' : '');
+        $social_linkedin = (esc_attr( get_option('shift8_fullnav_social_linkedin') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_linkedin') ) . '" target="_new"><i class="fa fa-linkedin"></i></a></li>' : '');
+        $social_instagram = (esc_attr( get_option('shift8_fullnav_social_instagram') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_instagram') ) . '" target="_new"><i class="fa fa-instagram"></i></a></li>' : '');
         echo $social_twitter . $social_facebook . $social_googleplus . $social_instagram . $social_linkedin . '
         </ul>
         </nav>';
