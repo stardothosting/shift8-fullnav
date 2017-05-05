@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.7.2
-* Stable tag: 1.19
+* Stable tag: 1.20
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -141,3 +141,6 @@ You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to se
 
 ### 1.19
 * Force social icons on mobile version of menu to open in new tab
+
+### 1.20
+* Added function to inject woocommerce shopping cart link + icon if woocommerce is installed
