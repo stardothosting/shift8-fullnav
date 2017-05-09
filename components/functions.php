@@ -28,12 +28,20 @@ function add_shift8_fullnav_menu() {
 		$link = $item->url;
 		$title = $item->title;
 		$target = $item->target;
+		$class = $item_class = null;
+        if (is_array($item->classes)) {
+            $class_num = count($item->classes);
+            $class_cnt = 0;
+            foreach ($item->classes as $item_class) {
+                (++$class_cnt === $class_num ? $class .= ' ' . esc_html($item_class) : $class .= esc_html($item_class) . ' ');
+            }
+        }
 		// item does not have a parent so menu_item_parent equals 0 (false)
 		if ( !$item->menu_item_parent ){
 			// save this id for later comparison with sub-menu items
 			$parent_id = $item->ID;
 			echo '<li class="fn-dropdown">
-			<a href="' .  $link . '" class="title" target="' . $target . '">
+			<a href="' .  $link . '" class="title ' . $class . '" target="' . $target . '">
 			' . $title . '
 			</a>';
 		}
@@ -44,7 +52,7 @@ function add_shift8_fullnav_menu() {
 				echo '<ul class="fn-dropdown-content">';
 			}
 			echo '<li>
-			<a href="' . $link . '" class="title" target="' . $target . '">' . $title . '</a>
+			<a href="' . $link . '" class="title ' . $class . '" target="' . $target . '">' . $title . '</a>
                 	</li>';
 
 			if ( $menu_array[ $count + 1 ]->menu_item_parent != $parent_id && $submenu ) {
