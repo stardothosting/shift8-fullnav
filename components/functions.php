@@ -28,6 +28,8 @@ function add_shift8_fullnav_menu() {
 		$link = $item->url;
 		$title = $item->title;
 		$target = $item->target;
+
+		// Grab CSS Classes
 		$class = $item_class = null;
         if (is_array($item->classes)) {
             $class_num = count($item->classes);
@@ -81,16 +83,27 @@ function add_shift8_fullnav_menu() {
 	$mcount = 0;
 	$msubmenu = false;
         foreach ($menu_array as $menu_item) {
-		if (!$menu_item->menu_item_parent) {
-			$mparent_id = $menu_item->ID;
-			echo '<li class="fn-menu-mobile-parent fn-menu-mobile-parent-item-' . $mparent_id .'"><a href="' . $menu_item->url . '">' . $menu_item->title . '</a>';
-		}
+
+            // Grab CSS Classes
+			$class = $item_class = null;
+			if (is_array($menu_item->classes)) {
+				$class_num = count($menu_item->classes);
+				$class_cnt = 0;
+				foreach ($menu_item->classes as $item_class) {
+					(++$class_cnt === $class_num ? $class .= ' ' . $item_class : $class .= $item_class . ' ');
+				}
+			}
+
+    		if (!$menu_item->menu_item_parent) {
+    			$mparent_id = $menu_item->ID;
+    			echo '<li class="fn-menu-mobile-parent fn-menu-mobile-parent-item-' . $mparent_id .'"><a href="' . $menu_item->url . '" class="' . $class . '">' . $menu_item->title . '</a>';
+    		}
                 if ( $mparent_id == $menu_item->menu_item_parent ) {
                         if ( !$msubmenu ) {
                                 $msubmenu = true;
                                 echo '<span id="fn-arrow-dropdown" class="fn-arrow-down"></span><ul class="fn-mobile-dropdown-content fn-mobile-dropdown-content-' . $mparent_id .'">';
                         }
-			echo '<li class="fn-menu-child-item fn-menu-child-item-' . $mparent_id .'"><a href="' . $menu_item->url . '">' . $menu_item->title . '</a></li>';
+			echo '<li class="fn-menu-child-item fn-menu-child-item-' . $mparent_id .'"><a href="' . $menu_item->url . '" class="' . $class . '">' . $menu_item->title . '</a></li>';
 
                         if ( $menu_array[ $mcount + 1 ]->menu_item_parent != $mparent_id && $msubmenu ) {
                                 echo '</ul>';

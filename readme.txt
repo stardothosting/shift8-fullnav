@@ -169,3 +169,6 @@ We do [web design](https://www.shift8web.ca "Toronto Web Design") , development 
 
 = 1.21 =
 * Added logic to inherit any assigned CSS classes to menu items for non-mobile version of the menu
+
+= 1.22 =
+* Added logic to inherit any assigned CSS classes to menu items for mobile version of the menu
