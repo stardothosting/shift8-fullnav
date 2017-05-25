@@ -51,7 +51,7 @@ function add_shift8_fullnav_menu() {
 		if ( $parent_id == $item->menu_item_parent ) {
 			if ( !$submenu ) { 
 				$submenu = true; 
-				echo '<ul class="fn-dropdown-content">';
+				echo '<ul class="fn-dropdown-content" id="fn-dropdown-content-item-' . $parent_id . '">';
 			}
 			echo '<li>
 			<a href="' . $link . '" class="title ' . $class . '" target="' . $target . '">' . $title . '</a>
