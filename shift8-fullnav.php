@@ -3,7 +3,7 @@
  * Plugin Name: Shift8 Full Nav
  * Plugin URI: https://github.com/stardothosting/shift8-fullnav
  * Description: This plugin adds a sticky menu to your site. When the menu is clicked it expands to the full screen
- * Version: 1.23
+ * Version: 1.24
  * Author: Shift8 Web 
  * Author URI: https://www.shift8web.ca
  * License: GPLv3

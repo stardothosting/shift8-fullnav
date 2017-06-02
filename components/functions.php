@@ -216,3 +216,13 @@ function shift8_get_google_fonts() {
                 return array_slice($content->items, 0, $amount);
         }
 }
+
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+    /* update cart count when add to cart is clicked */
+    add_filter( 'woocommerce_add_to_cart_fragments', 'shift8_cart_count_fragments', 10, 1 );
+}
+function shift8_cart_count_fragments( $fragments ) {
+    $fragments['a.header-cart-count'] = '<a class="title header-cart-count" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . WC()->cart->get_cart_contents_count() . '</a>';
+    return $fragments;
+}
+

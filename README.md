@@ -3,8 +3,8 @@
 * Donate link: https://www.shift8web.ca
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
-* Tested up to: 4.7.2
-* Stable tag: 1.23
+* Tested up to: 4.8
+* Stable tag: 1.24
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -153,3 +153,6 @@ You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to se
 
 ### 1.23
 * Added unique identifier for UL container for sub menu items
+
+### 1.24
+* Improved woocommerce compatability to include auto updating ajax cart count change when items are added to cart
