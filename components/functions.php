@@ -72,7 +72,7 @@ function add_shift8_fullnav_menu() {
     // Add woocommerce cart link if it exists
     if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
         $count = WC()->cart->cart_contents_count;
-        echo '<li class="fn-dropdown"><a class="title" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . esc_html( $count ) . '</a></li>';
+        echo '<li class="fn-dropdown"><a class="title header-cart-count" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . esc_html( $count ) . '</a></li>';
     }
 
             echo '</ul></nav></header>';
