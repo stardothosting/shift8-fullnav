@@ -226,7 +226,8 @@
 
 /* Dropdown Content (Hidden by Default) */
 .fn-dropdown-content {
-    display: none;
+    /*display: none;*/
+    opacity:0;
     position: absolute;
     min-width: 200px;
     margin:0 !important;
@@ -253,6 +254,10 @@
 /* Show the dropdown menu on hover */
 .fn-dropdown:hover .fn-dropdown-content, .fn-dropdown:hover .fn-dropdown-content li {
     display: block;
+    opacity:1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
