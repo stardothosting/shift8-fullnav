@@ -5,15 +5,19 @@ function shift8_fullnav_scripts() {
         // pop out nav
         wp_enqueue_style( 'shift8-fullnav-style', plugin_dir_url(dirname(__FILE__)) . 'css/style.css');
         wp_enqueue_script( 'shift8-fullnav-modern', plugin_dir_url(dirname(__FILE__)) . 'js/modernizr.js', array(), true );
-	wp_enqueue_script( 'shift8_fullnav_main', plugin_dir_url(dirname(__FILE__)) . 'js/main.js', array(), true );
+    	wp_enqueue_script( 'shift8_fullnav_main', plugin_dir_url(dirname(__FILE__)) . 'js/main.js', array(), true);
         // font awesome
         wp_enqueue_style( 'font-awesome-real', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 
         // Build inline style for menu based on administrative options chosen
         $shift8_fullnav_bar_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_bar_col') ), $opacity = esc_attr( get_option('shift8_fullnav_design_bar_tra')));
         $shift8_fullnav_ovr_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_ovr_col') ), $opacity = esc_attr( get_option('shift8_fullnav_design_ovr_tra')));
+
+        // Dropdown hover & colors
         $shift8_fullnav_drp_color = (esc_attr( get_option('shift8_fullnav_design_drp_bak') ) ? esc_attr( get_option('shift8_fullnav_design_drp_bak') ) : '#212121');
         $shift8_fullnav_drp_hover_color = (esc_attr( get_option('shift8_fullnav_design_drp_hvr') ) ? esc_attr( get_option('shift8_fullnav_design_drp_hvr') ) : '#3e3c3c');
+        $shift8_fullnav_drp_subcolor = (esc_attr( get_option('shift8_fullnav_design_drp_subbak') ) ? esc_attr( get_option('shift8_fullnav_design_drp_subbak') ) : '#212121');
+        $shift8_fullnav_drp_subhover_color = (esc_attr( get_option('shift8_fullnav_design_drp_subhvr') ) ? esc_attr( get_option('shift8_fullnav_design_drp_subhvr') ) : '#3e3c3c');
 
         // Load google fonts if necessary
         $shift8_fullnav_bar_font = (esc_attr( get_option('shift8_fullnav_bar_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_bar_font') ), 2));
@@ -74,20 +78,27 @@ function shift8_fullnav_scripts() {
 			font-size: {$shift8_fullnav_ovr_font_size};
                         color : {$shift8_fullnav_ovr_font_color};
                 }
-		.fn-dropdown-content a {
+		.sub-menu a {
 			font-family: {$shift8_fullnav_drp_font};
 			font-size: {$shift8_fullnav_drp_font_size};
 			color: {$shift8_fullnav_drp_font_color};
 		}
-		.fn-dropdown-content { 
-			background-color: {$shift8_fullnav_drp_color};
-		}
-		.fn-dropdown-content a:hover { 
-			background-color: {$shift8_fullnav_drp_hover_color};
-		}
-                .shift8-social {
-                        color: {$shift8_fullnav_ovr_font_color};
-                }
+        .sub-menu {
+            background-color: {$shift8_fullnav_drp_color};
+        }
+        .sub-menu > li > a:hover {
+            background-color: {$shift8_fullnav_drp_hover_color};
+        }
+        .sub-menu > li > ul > li {
+            background-color: {$shift8_fullnav_drp_subcolor};
+        }
+        .sub-menu > li > ul > li > a:hover {
+            background-color: {$shift8_fullnav_drp_subhover_color};
+        }
+
+        .shift8-social {
+            color: {$shift8_fullnav_ovr_font_color};
+        }
 		.fn-arrow-up {
 			width: 0;
 			height: 0;

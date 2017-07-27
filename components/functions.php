@@ -11,6 +11,7 @@ function add_shift8_fullnav_menu() {
                 }
             }
         }
+
         $menu_locations = get_nav_menu_locations();
         $menu_id = $menu_locations[ $shift8_fullnav_menu ] ;
         $menu_array = wp_get_nav_menu_items($menu_id);
@@ -19,126 +20,113 @@ function add_shift8_fullnav_menu() {
         <div class="fn-logo"><a href="' . get_site_url() . '"><img src="' . esc_attr( get_option('shift8_fullnav_logo')) . '" alt="Logo"></a></div>
         <a class="fn-primary-nav-trigger" href="#0">
         <span class="fn-menu-text">Menu</span><span class="fn-menu-icon"></span>
-        </a>
-        <nav>
-        <ul class="fn-secondary-nav">';
+        </a>';
 	$count = 0;
 	$submenu = false;
-	foreach( $menu_array as $item ) {
-		$link = $item->url;
-		$title = $item->title;
-		$target = $item->target;
+	$first_level = $first_levels = $second_level = $second_levels = null;
 
-		// Grab CSS Classes
-		$class = $item_class = null;
-        if (is_array($item->classes)) {
-            $class_num = count($item->classes);
-            $class_cnt = 0;
-            foreach ($item->classes as $item_class) {
-                (++$class_cnt === $class_num ? $class .= ' ' . esc_html($item_class) : $class .= esc_html($item_class) . ' ');
-            }
-        }
-		// item does not have a parent so menu_item_parent equals 0 (false)
-		if ( !$item->menu_item_parent ){
-			// save this id for later comparison with sub-menu items
-			$parent_id = $item->ID;
-			echo '<li class="fn-dropdown">
-			<a href="' .  $link . '" class="title ' . $class . '" target="' . $target . '">
-			' . $title . '
-			</a>';
-		}
+    // Desktop Menu
+	wp_nav_menu( array(
+//	    'menu' => 'primary-menu',
+		'menu_id' => $shift8_fullnav_menu,
+	    'container' => 'nav',
+        'container_class' => 'desktop-menu',
+        'menu_class' => 'fn-secondary-nav',
+	 ));
 
-		if ( $parent_id == $item->menu_item_parent ) {
-			if ( !$submenu ) { 
-				$submenu = true; 
-				echo '<ul class="fn-dropdown-content" id="fn-dropdown-content-item-' . $parent_id . '">';
-			}
-			echo '<li>
-			<a href="' . $link . '" class="title ' . $class . '" target="' . $target . '">' . $title . '</a>
-                	</li>';
+    echo '</header>';
 
-			if ( $menu_array[ $count + 1 ]->menu_item_parent != $parent_id && $submenu ) {
-				echo '</ul>';
-				$submenu = false;
-			}
-		}
-
-		if ( $menu_array[ $count + 1 ]->menu_item_parent != $parent_id ) { 
-			echo '</li>';
-			$submenu = false;
-		}
-		$count++;  
-	}
     // Add woocommerce cart link if it exists
-    if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-        $count = WC()->cart->cart_contents_count;
-        echo '<li class="fn-dropdown"><a class="title header-cart-count" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . esc_html( $count ) . '</a></li>';
+    //if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+    //    $count = WC()->cart->cart_contents_count;
+    //    echo '<li class="fn-dropdown"><a class="title header-cart-count" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . esc_html( $count ) . '</a></li>';
+    //}
+
+	// Mobile Menu
+    wp_nav_menu( array(
+		'menu_id' => $shift8_fullnav_menu,
+        'container' => 'nav',
+        'container_class' => 'mobile-menu',
+        'menu_class' => 'fn-primary-nav',
+        'depth' => '2',
+		'items_wrap' => shift8_mobile_social(),
+        'walker'          => new Shift8_Walker_Nav_Menu()
+    ));
+
+}
+
+// Custom walker for mobile menu
+class Shift8_Walker_Nav_menu extends Walker_Nav_Menu {
+	private $curItem;
+
+    function start_lvl(&$output, $depth) {
+//        $indent = str_repeat("\t", $depth);
+        if ($depth == "0") {
+            $output .= "<span id=\"fn-arrow-dropdown\" class=\"fn-arrow-down\"></span>";
+            $output .= "<ul class=\"fn-mobile-dropdown-content fn-mobile-dropdown-content-" . $this->curItem->ID . " level-".$depth."\">\n";
+        } else if ($depth == "1") {
+            //$output .= "\n$indent<ul class=\"fn-mobile-dropdown-content level-".$depth."\">\n";
+            $output .= null;
+        }
     }
+	function start_el(&$output, $item, $depth, $args) {
+        global $wp_query;
+		$this->curItem = $item;
+		$class_names = 'fn-menu-mobile-parent fn-menu-mobile-parent-item-' . $item->ID;
 
-            echo '</ul></nav></header>';
+		$output .= '<li class="' . $class_names . '">';
+        $attributes  = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
+        $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
+        $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
+        $attributes .= !empty($item->url) ? ' href="' . esc_attr($item->url) . '"' : '';
 
-        echo '<nav>
-        <ul class="fn-primary-nav">';
 
-	$mcount = 0;
-	$msubmenu = false;
-        foreach ($menu_array as $menu_item) {
+        $item_output = $args->before;
+        $item_output .= '<a' . $attributes . '>';
+        $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID);
+        $item_output .= '</a>';
+        $item_output .= $args->after;
 
-            // Grab CSS Classes
-			$class = $item_class = null;
-			if (is_array($menu_item->classes)) {
-				$class_num = count($menu_item->classes);
-				$class_cnt = 0;
-				foreach ($menu_item->classes as $item_class) {
-					(++$class_cnt === $class_num ? $class .= ' ' . $item_class : $class .= $item_class . ' ');
-				}
-			}
+        $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
 
-    		if (!$menu_item->menu_item_parent) {
-    			$mparent_id = $menu_item->ID;
-    			echo '<li class="fn-menu-mobile-parent fn-menu-mobile-parent-item-' . $mparent_id .'"><a href="' . $menu_item->url . '" class="' . $class . '">' . $menu_item->title . '</a>';
-    		}
-                if ( $mparent_id == $menu_item->menu_item_parent ) {
-                        if ( !$msubmenu ) {
-                                $msubmenu = true;
-                                echo '<span id="fn-arrow-dropdown" class="fn-arrow-down"></span><ul class="fn-mobile-dropdown-content fn-mobile-dropdown-content-' . $mparent_id .'">';
-                        }
-			echo '<li class="fn-menu-child-item fn-menu-child-item-' . $mparent_id .'"><a href="' . $menu_item->url . '" class="' . $class . '">' . $menu_item->title . '</a></li>';
-
-                        if ( $menu_array[ $mcount + 1 ]->menu_item_parent != $mparent_id && $msubmenu ) {
-                                echo '</ul>';
-				echo '<script>
-					jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . '").click( function() {
-						if (jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . ' #fn-arrow-dropdown").hasClass("fn-arrow-down")) {
-							jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . ' #fn-arrow-dropdown").removeClass("fn-arrow-down");
-							jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . ' #fn-arrow-dropdown").addClass("fn-arrow-up");
-						} else {
-                                                        jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . ' #fn-arrow-dropdown").removeClass("fn-arrow-up");
-                                                        jQuery(".fn-menu-mobile-parent-item-' . $mparent_id . ' #fn-arrow-dropdown").addClass("fn-arrow-down");
-						}
-						jQuery(".fn-mobile-dropdown-content-' . $mparent_id . '").slideToggle();
+		if (!$depth) {
+			$output .= '<script>
+                    		jQuery(".fn-menu-mobile-parent-item-' . $item->ID . '").click( function() {
+							if (jQuery(".fn-menu-mobile-parent-item-' . $item->ID . ' #fn-arrow-dropdown").hasClass("fn-arrow-down")) {
+								jQuery(".fn-menu-mobile-parent-item-' . $item->ID . ' #fn-arrow-dropdown").removeClass("fn-arrow-down");
+								jQuery(".fn-menu-mobile-parent-item-' . $item->ID . ' #fn-arrow-dropdown").addClass("fn-arrow-up");
+							} else {
+								jQuery(".fn-menu-mobile-parent-item-' . $item->ID . ' #fn-arrow-dropdown").removeClass("fn-arrow-up");
+								jQuery(".fn-menu-mobile-parent-item-' . $item->ID . ' #fn-arrow-dropdown").addClass("fn-arrow-down");
+							}
+							jQuery(".fn-mobile-dropdown-content-' . $item->ID . '").slideToggle();
 					});
 					</script>';
-                                $msubmenu = false;
-                        }
-                }
+		}
+	} 
+}
 
-                if ( $menu_array[ $mcount + 1 ]->menu_item_parent != $mparent_id ) {
-                        echo '</li>';
-                        $msubmenu = false;
-                }
-                $mcount++;
-        }
+// Generate social icons for mobile menu
+function shift8_mobile_social() {
 
-        // build social icons
-        $social_twitter = (esc_attr( get_option('shift8_fullnav_social_twitter') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_twitter') ) . '" target="_new"><i class="fa fa-twitter"></i></a></li>' : '');
-        $social_facebook = (esc_attr( get_option('shift8_fullnav_social_facebook') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_facebook') ) . '" target="_new"><i class="fa fa-facebook"></i></a></li>' : '');
-        $social_googleplus = (esc_attr( get_option('shift8_fullnav_social_googleplus') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_googleplus') ) . '" target="_new"><i class="fa fa-google-plus"></i></a></li>' : '');
-        $social_linkedin = (esc_attr( get_option('shift8_fullnav_social_linkedin') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_linkedin') ) . '" target="_new"><i class="fa fa-linkedin"></i></a></li>' : '');
-        $social_instagram = (esc_attr( get_option('shift8_fullnav_social_instagram') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_instagram') ) . '" target="_new"><i class="fa fa-instagram"></i></a></li>' : '');
-        echo $social_twitter . $social_facebook . $social_googleplus . $social_instagram . $social_linkedin . '
-        </ul>
-        </nav>';
+	// open the <ul>, set 'menu_class' and 'menu_id' values
+	$wrap  = '<ul id="%1$s" class="%2$s">';
+  
+	  // get nav items as configured in /wp-admin/
+	$wrap .= '%3$s';
+
+	// build social icons
+	$social_twitter = (esc_attr( get_option('shift8_fullnav_social_twitter') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_twitter') ) . '" target="_new"><i class="fa fa-twitter"></i></a></li>' : '');
+	$social_facebook = (esc_attr( get_option('shift8_fullnav_social_facebook') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_facebook') ) . '" target="_new"><i class="fa fa-facebook"></i></a></li>' : '');
+	$social_googleplus = (esc_attr( get_option('shift8_fullnav_social_googleplus') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_googleplus') ) . '" target="_new"><i class="fa fa-google-plus"></i></a></li>' : '');
+	$social_linkedin = (esc_attr( get_option('shift8_fullnav_social_linkedin') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_linkedin') ) . '" target="_new"><i class="fa fa-linkedin"></i></a></li>' : '');
+	$social_instagram = (esc_attr( get_option('shift8_fullnav_social_instagram') ) ? '<li class="shift8-social"><a href="' . esc_attr( get_option('shift8_fullnav_social_instagram') ) . '" target="_new"><i class="fa fa-instagram"></i></a></li>' : '');
+
+	$wrap .= $social_twitter . $social_facebook . $social_googleplus . $social_instagram . $social_linkedin;
+
+	$wrap .= '</ul>';
+
+	return $wrap;
 }
 // Convert hexdec color string to rgb(a) string
 function hex2rgba($color, $opacity = false) {
@@ -226,3 +214,19 @@ function shift8_cart_count_fragments( $fragments ) {
     return $fragments;
 }
 
+// Multi dimensional array search
+function shift8_multi_search($array, $key, $value) {
+	$results = array();
+
+	if (is_array($array)) {
+		if (isset($array[$key]) && $array[$key] == $value) {
+			$results[] = $array;
+		}
+
+		foreach ($array as $subarray) {
+			$results = array_merge($results, shift8_multi_search($subarray, $key, $value));
+		}
+	}
+
+	return $results;
+}

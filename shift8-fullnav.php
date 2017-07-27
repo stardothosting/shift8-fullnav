@@ -3,7 +3,7 @@
  * Plugin Name: Shift8 Full Nav
  * Plugin URI: https://github.com/stardothosting/shift8-fullnav
  * Description: This plugin adds a sticky menu to your site. When the menu is clicked it expands to the full screen
- * Version: 1.26
+ * Version: 1.27
  * Author: Shift8 Web 
  * Author URI: https://www.shift8web.ca
  * License: GPLv3
@@ -195,6 +195,12 @@ function shift8_fullnav_settings_page() {
         </tr>
         <tr valign="top">
         <td>Menu Dropdown Hover Color :</td><td><input type="text" name="shift8_fullnav_design_drp_hvr" value="<?php echo esc_attr( get_option('shift8_fullnav_design_drp_hvr') ); ?>" class="fullnav-color-field" data-default-color="#666666" /></td>
+        </tr>
+        <tr valign="top">
+        <td>Menu Sub Dropdown Color :</td><td><input type="text" name="shift8_fullnav_design_drp_subbak" value="<?php echo esc_attr( get_option('shift8_fullnav_design_drp_subbak') ); ?>" class="fullnav-color-field" data-default-color="#252525" /></td>
+        </tr>
+        <tr valign="top">
+        <td>Menu Sub Dropdown Hover Color :</td><td><input type="text" name="shift8_fullnav_design_drp_subhvr" value="<?php echo esc_attr( get_option('shift8_fullnav_design_drp_subhvr') ); ?>" class="fullnav-color-field" data-default-color="#666666" /></td>
         </tr>
         
         <tr valign="top">
