@@ -251,6 +251,9 @@
 }
 
 /* Links inside the dropdown */
+.sub_menu {
+    padding-left:0;
+}
 .fn-secondary-nav .sub-menu > li {
 	margin: 0;
     display:block;
