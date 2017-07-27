@@ -32,6 +32,7 @@ function add_shift8_fullnav_menu() {
 	    'container' => 'nav',
         'container_class' => 'desktop-menu',
         'menu_class' => 'fn-secondary-nav',
+        'walker'          => new Shift8_Walker_Nav_Menu_Desktop()
 	 ));
 
     echo '</header>';
@@ -50,13 +51,25 @@ function add_shift8_fullnav_menu() {
         'menu_class' => 'fn-primary-nav',
         'depth' => '2',
 		'items_wrap' => shift8_mobile_social(),
-        'walker'          => new Shift8_Walker_Nav_Menu()
+        'walker'          => new Shift8_Walker_Nav_Menu_Mobile()
     ));
 
 }
 
+// Custom walker for desktop menu
+class Shift8_Walker_Nav_Menu_Desktop extends Walker_Nav_Menu {
+
+    function start_lvl(&$output, $depth) {
+        if ($depth >= "0") {
+            $output .= "<ul class=\"fn-dropdown-content level-".$depth." sub-menu \">\n";
+        } else { 
+			$output .= "<ul class=\"fn-secondary-nav\">\n";
+		}
+    }
+}
+
 // Custom walker for mobile menu
-class Shift8_Walker_Nav_menu extends Walker_Nav_Menu {
+class Shift8_Walker_Nav_Menu_Mobile extends Walker_Nav_Menu {
 	private $curItem;
 
     function start_lvl(&$output, $depth) {

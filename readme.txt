@@ -4,7 +4,7 @@ Donate link: https://www.shift8web.ca
 Tags: sticky navigation, sticky nav, full width nav, sticky menu, full width menu, modal menu, full screen modal menu, full screen modal navigation, full screen nav, css navigation,responsive sticky nav, responsive sticky navigation, responsive sticky menu, responsive menu, responsive nav,responsive,navigation,menu
 Requires at least: 3.0.1
 Tested up to: 4.8
-Stable tag: 1.27
+Stable tag: 1.28
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -187,3 +187,6 @@ We do [web design](https://www.shift8web.ca "Toronto Web Design") , development 
 
 = 1.27 =
 * Switched from custom nav menu queries to using a walker class with wp_nav_menu function. This allowed for multiple menu hierarchy support (parent -> child -> grandchild). The navigation menu now supports dropdowns for up to 3 layers deep.
+
+= 1.28 =
+* Fixed bug with dropdown system on desktop. Created custom walker for desktop.

@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.8
-* Stable tag: 1.27
+* Stable tag: 1.28
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -163,3 +163,6 @@ You can visit [our website](https://www.shift8web.ca "Toronto Web Design") to se
 ### 1.27
 * Switched from custom nav menu queries to using a walker class with wp_nav_menu function. This allowed for multiple menu hierarchy support (parent -> child -> grandchild). The navigation menu now supports dropdowns for up to 3 layers dee
 p.
+
+### 1.28 
+* Fixed bug with dropdown system on desktop. Created custom walker for desktop.

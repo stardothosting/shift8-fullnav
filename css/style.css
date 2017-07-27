@@ -229,7 +229,7 @@
 }
 
 /* Dropdown Content (Hidden by Default) */
-.fn-secondary-nav > li > ul {
+.fn-secondary-nav > li > ul { 
     display:none;
     opacity:0;
     position: absolute; 
