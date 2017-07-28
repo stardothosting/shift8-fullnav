@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.8
-* Stable tag: 1.32
+* Stable tag: 1.33
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -178,3 +178,6 @@ p.
 
 ### 1.32
 * Cleaned up nav li classes (too many extra classes were generated)
+
+### 1.33 
+* Re-integrated woocommerce cart icon into nav walker wrapper0

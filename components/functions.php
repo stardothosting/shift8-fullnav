@@ -27,21 +27,15 @@ function add_shift8_fullnav_menu() {
 
     // Desktop Menu
 	wp_nav_menu( array(
-//	    'menu' => 'primary-menu',
 		'menu_id' => $shift8_fullnav_menu,
 	    'container' => 'nav',
         'container_class' => 'desktop-menu',
         'menu_class' => 'fn-secondary-nav',
+        'items_wrap' => shift8_woocommerce_icon(),
         'walker'          => new Shift8_Walker_Nav_Menu_Desktop()
 	 ));
 
     echo '</header>';
-
-    // Add woocommerce cart link if it exists
-    //if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-    //    $count = WC()->cart->cart_contents_count;
-    //    echo '<li class="fn-dropdown"><a class="title header-cart-count" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . esc_html( $count ) . '</a></li>';
-    //}
 
 	// Mobile Menu
     wp_nav_menu( array(
@@ -138,6 +132,26 @@ class Shift8_Walker_Nav_Menu_Mobile extends Walker_Nav_Menu {
 					</script>';
 		}
 	} 
+}
+
+// Generate Woocommerce shopping cart icon if installed
+function shift8_woocommerce_icon() {
+
+    // open the <ul>, set 'menu_class' and 'menu_id' values
+    $wrap  = '<ul id="%1$s" class="%2$s">';
+
+      // get nav items as configured in /wp-admin/
+    $wrap .= '%3$s';
+
+	// Add woocommerce cart link if it exists
+	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+		$count = WC()->cart->cart_contents_count;
+		$wrap .= '<li class="fn-dropdown"><a class="title header-cart-count" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . esc_html( $count ) . '</a></li>';
+	}
+	
+	$wrap .= '</ul>';
+	
+	return $wrap;
 }
 
 // Generate social icons for mobile menu
