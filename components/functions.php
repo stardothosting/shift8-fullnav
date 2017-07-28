@@ -64,9 +64,11 @@ class Shift8_Walker_Nav_Menu_Desktop extends Walker_Nav_Menu {
     function start_el(&$output, $item, $depth, $args) {
         global $wp_query;
         $this->curItem = $item;
-        $class_names = 'fn-dropdown fn-menu-item-' . $item->ID;
+        //$class_names = 'fn-dropdown fn-menu-item-' . $item->ID;
+        $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+        $class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
 
-        $output .= '<li class="' . $class_names . '">';
+        $output .= '<li class="' . $class_names . ' fn-dropdown fn-menu-item-' . $item->ID . '">';
         $attributes  = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
         $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
         $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
