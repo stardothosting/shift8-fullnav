@@ -278,7 +278,7 @@
 }
 
 /* Show the sub dropdown menu on hover */
-.fn-secondary-nav .menu-item-has-children > ul > li:hover > .sub-menu {
+.fn-secondary-nav > li > ul > li:hover > .sub-menu {
     display: block;
     opacity:1;
     transition: opacity .25s ease-in-out;
