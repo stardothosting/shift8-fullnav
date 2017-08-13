@@ -53,7 +53,7 @@ function add_shift8_fullnav_menu() {
 // Custom walker for desktop menu
 class Shift8_Walker_Nav_Menu_Desktop extends Walker_Nav_Menu {
 
-    function start_lvl(&$output, $depth) {
+    function start_lvl(&$output, $depth = 0, $args = array()) {
         if ($depth >= "0") {
             $output .= "<ul class=\"fn-dropdown-content level-".$depth." sub-menu \">\n";
         } else { 
@@ -61,7 +61,7 @@ class Shift8_Walker_Nav_Menu_Desktop extends Walker_Nav_Menu {
 		}
     }
 
-    function start_el(&$output, $item, $depth, $args) {
+    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
         global $wp_query;
         $this->curItem = $item;
         //$class_names = 'fn-dropdown fn-menu-item-' . $item->ID;
@@ -89,17 +89,15 @@ class Shift8_Walker_Nav_Menu_Desktop extends Walker_Nav_Menu {
 class Shift8_Walker_Nav_Menu_Mobile extends Walker_Nav_Menu {
 	private $curItem;
 
-    function start_lvl(&$output, $depth) {
-//        $indent = str_repeat("\t", $depth);
+    function start_lvl(&$output, $depth = 0, $args = array()) {
         if ($depth == "0") {
             $output .= "<span id=\"fn-arrow-dropdown\" class=\"fn-arrow-down\"></span>";
             $output .= "<ul class=\"fn-mobile-dropdown-content fn-mobile-dropdown-content-" . $this->curItem->ID . " level-".$depth."\">\n";
         } else if ($depth == "1") {
-            //$output .= "\n$indent<ul class=\"fn-mobile-dropdown-content level-".$depth."\">\n";
             $output .= null;
         }
     }
-	function start_el(&$output, $item, $depth, $args) {
+    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
         global $wp_query;
 		$this->curItem = $item;
 		$class_names = 'fn-menu-mobile-parent fn-menu-mobile-parent-item-' . $item->ID;
