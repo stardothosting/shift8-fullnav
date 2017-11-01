@@ -43,7 +43,7 @@ function add_shift8_fullnav_menu() {
         'container' => 'nav',
         'container_class' => 'mobile-menu',
         'menu_class' => 'fn-primary-nav',
-        'depth' => '2',
+        'depth' => '3',
 		'items_wrap' => shift8_mobile_social(),
         'walker'          => new Shift8_Walker_Nav_Menu_Mobile()
     ));
