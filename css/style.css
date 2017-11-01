@@ -251,14 +251,14 @@
 }
 
 /* Links inside the dropdown */
-.sub-menu {
+.fn-sub-menu {
     padding-left:0;
 }
-.fn-secondary-nav .sub-menu > li {
+.fn-secondary-nav .fn-sub-menu > li {
 	margin: 0;
     display:block;
 }
-.fn-secondary-nav .sub-menu a {
+.fn-secondary-nav .fn-sub-menu a {
     text-decoration: none;
     display: block;
     padding:10px 0 10px 0;
@@ -269,7 +269,7 @@
 }
 
 /* Show the dropdown menu on hover */
-.fn-secondary-nav > li:hover > .sub-menu {
+.fn-secondary-nav > li:hover > .fn-sub-menu {
     display: block;
     opacity:1;
     transition: opacity .25s ease-in-out;
@@ -278,7 +278,7 @@
 }
 
 /* Show the sub dropdown menu on hover */
-.fn-secondary-nav > li > ul > li:hover > .sub-menu {
+.fn-secondary-nav > li > ul > li:hover > .fn-sub-menu {
     display: block;
     opacity:1;
     transition: opacity .25s ease-in-out;

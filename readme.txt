@@ -4,7 +4,7 @@ Donate link: https://www.shift8web.ca
 Tags: sticky navigation, sticky nav, full width nav, sticky menu, full width menu, modal menu, full screen modal menu, full screen modal navigation, full screen nav, css navigation,responsive sticky nav, responsive sticky navigation, responsive sticky menu, responsive menu, responsive nav,responsive,navigation,menu
 Requires at least: 3.0.1
 Tested up to: 4.8
-Stable tag: 1.35
+Stable tag: 1.36
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -212,3 +212,7 @@ We do [web design](https://www.shift8web.ca "Toronto Web Design") , development 
 
 = 1.35 =
 * Resolved PHP Warning walker start_el and start_lvl function declaration adherence
+
+= 1.36 =
+* Resolved conflicting CSS name
+

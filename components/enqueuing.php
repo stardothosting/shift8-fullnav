@@ -78,21 +78,21 @@ function shift8_fullnav_scripts() {
 			font-size: {$shift8_fullnav_ovr_font_size};
                         color : {$shift8_fullnav_ovr_font_color};
                 }
-		.sub-menu a {
+		.fn-sub-menu a {
 			font-family: {$shift8_fullnav_drp_font};
 			font-size: {$shift8_fullnav_drp_font_size};
 			color: {$shift8_fullnav_drp_font_color};
 		}
-        .sub-menu {
+        .fn-sub-menu {
             background-color: {$shift8_fullnav_drp_color};
         }
-        .sub-menu > li > a:hover {
+        .fn-sub-menu > li > a:hover {
             background-color: {$shift8_fullnav_drp_hover_color};
         }
-        .sub-menu > li > ul > li {
+        .fn-sub-menu > li > ul > li {
             background-color: {$shift8_fullnav_drp_subcolor};
         }
-        .sub-menu > li > ul > li > a:hover {
+        .fn-sub-menu > li > ul > li > a:hover {
             background-color: {$shift8_fullnav_drp_subhover_color};
         }
 

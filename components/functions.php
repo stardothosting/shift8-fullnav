@@ -55,7 +55,7 @@ class Shift8_Walker_Nav_Menu_Desktop extends Walker_Nav_Menu {
 
     function start_lvl(&$output, $depth = 0, $args = array()) {
         if ($depth >= "0") {
-            $output .= "<ul class=\"fn-dropdown-content level-".$depth." sub-menu \">\n";
+            $output .= "<ul class=\"fn-dropdown-content level-".$depth." fn-sub-menu \">\n";
         } else { 
 			$output .= "<ul class=\"fn-secondary-nav\">\n";
 		}
