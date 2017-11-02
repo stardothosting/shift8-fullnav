@@ -3,7 +3,7 @@
  * Plugin Name: Shift8 Full Nav
  * Plugin URI: https://github.com/stardothosting/shift8-fullnav
  * Description: This plugin adds a sticky menu to your site. When the menu is clicked it expands to the full screen
- * Version: 1.37
+ * Version: 1.38
  * Author: Shift8 Web 
  * Author URI: https://www.shift8web.ca
  * License: GPLv3
@@ -89,6 +89,22 @@ function shift8_fullnav_settings_page() {
         </td>
 	</th>
 	</tr>
+        <tr valign="top">
+        <td>Select a Nav Menu to use : </td>
+        <td>
+        <div class="shift8-fullnav-select">
+                <select name="shift8_fullnav_navlocation">
+                        <option>Site default nav</option>
+                        <?php
+                            $menus = get_registered_nav_menus();
+                            foreach ( $menus as $location => $description ) {
+                                echo "<option value='" . $location . "' " . $selected . ">" . esc_attr( $description ) . "</option>";
+                            }
+                        ?>
+                </select>
+        </div>
+        </td>
+        </tr>
         <tr valign="top">
         <td>Screen width mobile breakpoint : </td><td><input size="6" type="text" name="shift8_fullnav_mobilebreak" value="<?php echo esc_attr( get_option('shift8_fullnav_mobilebreak') ); ?>" /> (px)</td>
         </tr>

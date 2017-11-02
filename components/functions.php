@@ -2,16 +2,18 @@
 
 // Inject menu system in header
 function add_shift8_fullnav_menu() {
+        $chosen_menu = esc_attr( get_option('shift8_fullnav_navlocation'));
         // Build array from primary nav menu
         $locations = get_theme_mod( 'nav_menu_locations' );
         if (!empty($locations)) {
             foreach ($locations as $locationId => $menuValue) {
-                if (has_nav_menu($locationId)) {
+                if (has_nav_menu($locationId) && $menuValue == $chosen_menu) {
+                    $shift8_fullnav_menu = $locationId;
+                } else if (has_nav_menu($locationId) {
                     $shift8_fullnav_menu = $locationId;
                 }
             }
         }
-
         $menu_locations = get_nav_menu_locations();
         $menu_id = $menu_locations[ $shift8_fullnav_menu ] ;
         $menu_array = wp_get_nav_menu_items($menu_id);
@@ -43,7 +45,7 @@ function add_shift8_fullnav_menu() {
         'container' => 'nav',
         'container_class' => 'mobile-menu',
         'menu_class' => 'fn-primary-nav',
-        'depth' => '3',
+        'depth' => '2',
 		'items_wrap' => shift8_mobile_social(),
         'walker'          => new Shift8_Walker_Nav_Menu_Mobile()
     ));

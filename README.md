@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.8
-* Stable tag: 1.37
+* Stable tag: 1.38
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -194,3 +194,6 @@ p.
 
 ### 1.37
 * Increased sub menu depth for mobile from 2 to 3
+
+### 1.38
+* Reversion of change in 1.37 and added admin option to actually specify which menu you want the plugin to use
