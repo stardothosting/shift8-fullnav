@@ -9,7 +9,7 @@ function add_shift8_fullnav_menu() {
             foreach ($locations as $locationId => $menuValue) {
                 if (has_nav_menu($locationId) && $menuValue == $chosen_menu) {
                     $shift8_fullnav_menu = $locationId;
-                } else if (has_nav_menu($locationId) {
+                } else {
                     $shift8_fullnav_menu = $locationId;
                 }
             }
