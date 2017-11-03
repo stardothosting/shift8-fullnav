@@ -5,15 +5,23 @@ function add_shift8_fullnav_menu() {
         $chosen_menu = esc_attr( get_option('shift8_fullnav_navlocation'));
         // Build array from primary nav menu
         $locations = get_theme_mod( 'nav_menu_locations' );
-        if (!empty($locations)) {
-            foreach ($locations as $locationId => $menuValue) {
-                if (has_nav_menu($locationId) && $menuValue == $chosen_menu) {
-                    $shift8_fullnav_menu = $locationId;
-                } else {
-                    $shift8_fullnav_menu = $locationId;
-                }
-            }
-        }
+        $shift8_fullnav_menu = array();
+
+		foreach ($locations as $menuValue => $locationId) {
+			if ($chosen_menu == $menuValue) {
+				$location_obj = wp_get_nav_menu_object( $locationId );
+				$shift8_fullnav_menu = array(
+					'location_id' => $locationId,
+					'location_name' => $menuValue,
+					);
+			} else if (has_nav_menu($locationId)) {
+                    $shift8_fullnav_menu = array(
+                        'location_id' => $locationId,
+                        'location_name' => $menuValue,
+                    );
+			}
+		}
+
         $menu_locations = get_nav_menu_locations();
         $menu_id = $menu_locations[ $shift8_fullnav_menu ] ;
         $menu_array = wp_get_nav_menu_items($menu_id);
@@ -29,7 +37,8 @@ function add_shift8_fullnav_menu() {
 
     // Desktop Menu
 	wp_nav_menu( array(
-		'menu_id' => $shift8_fullnav_menu,
+		'menu_id' => $shift8_fullnav_menu['location_id'],
+		'theme_location' => $shift8_fullnav_menu['location_name'],
 	    'container' => 'nav',
         'container_class' => 'desktop-menu',
         'menu_class' => 'fn-secondary-nav',
@@ -41,7 +50,8 @@ function add_shift8_fullnav_menu() {
 
 	// Mobile Menu
     wp_nav_menu( array(
-		'menu_id' => $shift8_fullnav_menu,
+		'menu_id' => $shift8_fullnav_menu['location_id'],
+		'theme_location' => $shift8_fullnav_menu['location_name'],
         'container' => 'nav',
         'container_class' => 'mobile-menu',
         'menu_class' => 'fn-primary-nav',

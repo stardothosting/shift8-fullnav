@@ -197,3 +197,6 @@ p.
 
 ### 1.38
 * Reversion of change in 1.37 and added admin option to actually specify which menu you want the plugin to use
+
+### 1.39
+* Fixed location menu nav chooser in admin settings and application of nav location choice on front end
