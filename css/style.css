@@ -265,7 +265,7 @@
     letter-spacing: 1px;
     border-bottom:1px solid #dddddd;
     outline:0;
-    padding-left: 2.2em !important;
+    padding-left: 2.2em;
 }
 
 /* Show the dropdown menu on hover */
