@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.8
-* Stable tag: 1.40
+* Stable tag: 1.41
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -203,3 +203,6 @@ p.
 
 ### 1.40
 * Removed important declaration from padding left for sub menu items
+
+### 1.41
+* Added jQuery click function to auto close the extended menu when an actual menu option is clicked
