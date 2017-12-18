@@ -3,7 +3,7 @@
  * Plugin Name: Shift8 Full Nav
  * Plugin URI: https://github.com/stardothosting/shift8-fullnav
  * Description: This plugin adds a sticky menu to your site. When the menu is clicked it expands to the full screen
- * Version: 1.43
+ * Version: 1.44
  * Author: Shift8 Web 
  * Author URI: https://www.shift8web.ca
  * License: GPLv3
@@ -36,12 +36,14 @@ function shift8_fullnav_settings_page() {
 <h2>Shift8 Full Nav Settings</h2>
 <?php if (is_admin()) {
 $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'core_options';
+$plugin_data = get_plugin_data( __FILE__ );
+$plugin_name = $plugin_data['TextDomain'];
 ?>
 <h2 class="nav-tab-wrapper">
-    <a href="?page=shift8-fullnav%2Fcomponents%2Fsettings.php%2Fcustom&tab=core_options" class="nav-tab <?php echo $active_tab == 'core_options' ? 'nav-tab-active' : ''; ?>">Core Options</a>
-    <a href="?page=shift8-fullnav%2Fcomponents%2Fsettings.php%2Fcustom&tab=font_options" class="nav-tab <?php echo $active_tab == 'font_options' ? 'nav-tab-active' : ''; ?>">Font Options</a>
-    <a href="?page=shift8-fullnav%2Fcomponents%2Fsettings.php%2Fcustom&tab=design_options" class="nav-tab <?php echo $active_tab == 'design_options' ? 'nav-tab-active' : ''; ?>">Design Options</a>
-    <a href="?page=shift8-fullnav%2Fcomponents%2Fsettings.php%2Fcustom&tab=social_options" class="nav-tab <?php echo $active_tab == 'social_options' ? 'nav-tab-active' : ''; ?>">Social Options</a>
+    <a href="?page=<?php echo $plugin_name; ?>%2Fcomponents%2Fsettings.php%2Fcustom&tab=core_options" class="nav-tab <?php echo $active_tab == 'core_options' ? 'nav-tab-active' : ''; ?>">Core Options</a>
+    <a href="?page=<?php echo $plugin_name; ?>%2Fcomponents%2Fsettings.php%2Fcustom&tab=font_options" class="nav-tab <?php echo $active_tab == 'font_options' ? 'nav-tab-active' : ''; ?>">Font Options</a>
+    <a href="?page=<?php echo $plugin_name; ?>%2Fcomponents%2Fsettings.php%2Fcustom&tab=design_options" class="nav-tab <?php echo $active_tab == 'design_options' ? 'nav-tab-active' : ''; ?>">Design Options</a>
+    <a href="?page=<?php echo $plugin_name; ?>%2Fcomponents%2Fsettings.php%2Fcustom&tab=social_options" class="nav-tab <?php echo $active_tab == 'social_options' ? 'nav-tab-active' : ''; ?>">Social Options</a>
 </h2>
 <form method="post" action="options.php">
     <?php settings_fields( 'shift8-fullnav-settings-group' ); ?>
