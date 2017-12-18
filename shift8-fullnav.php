@@ -3,7 +3,7 @@
  * Plugin Name: Shift8 Full Nav
  * Plugin URI: https://github.com/stardothosting/shift8-fullnav
  * Description: This plugin adds a sticky menu to your site. When the menu is clicked it expands to the full screen
- * Version: 1.42
+ * Version: 1.43
  * Author: Shift8 Web 
  * Author URI: https://www.shift8web.ca
  * License: GPLv3
@@ -62,7 +62,7 @@ $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'core_options';
 	?>
     <table class="form-table">
     <!-- CORE SETTINGS -->
-    <?php if ($active_tab == 'core_options' ) { ?>
+    <tbody class="<?php echo $active_tab == 'core_options' ? 'shift8-fullnav-admin-tab-active' : 'shift8-fullnav-admin-tab-inactive'; ?>">
 	<tr valign="top">
 	<th scope="row">Core Settings</th>
 	</tr>
@@ -129,8 +129,9 @@ $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'core_options';
 		<td><img src="<?php echo $fullnav_logo_thumb[0]; ?>"></td>
 		<?php } ?>
         </tr>
+        </tbody>
         <!-- FONT OPTIONS -->
-        <?php } else if ($active_tab == 'font_options') { ?>
+        <tbody class="<?php echo $active_tab == 'font_options' ? 'shift8-fullnav-admin-tab-active' : 'shift8-fullnav-admin-tab-inactive'; ?>">
         <tr valign="top">
         <th scope="row">Font Options</th>
         </tr>
@@ -204,8 +205,9 @@ $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'core_options';
         <tr valign="top">
         <td>Menu Dropdown Font Size : </td><td><input size="6" type="text" name="shift8_fullnav_drp_font_siz" value="<?php echo esc_attr( get_option('shift8_fullnav_drp_font_siz') ); ?>" /> (px)</td>
         </tr>
+        </tbody>
         <!-- DESIGN OPTIONS -->
-        <?php } else if ($active_tab == 'design_options') { ?>
+        <tbody class="<?php echo $active_tab == 'design_options' ? 'shift8-fullnav-admin-tab-active' : 'shift8-fullnav-admin-tab-inactive'; ?>">
         <tr valign="top">
         <th scope="row">Design Options</th>
 	</tr>
@@ -233,8 +235,9 @@ $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'core_options';
         <tr valign="top">
         <td>Menu Sub Dropdown Hover Color :</td><td><input type="text" name="shift8_fullnav_design_drp_subhvr" value="<?php echo esc_attr( get_option('shift8_fullnav_design_drp_subhvr') ); ?>" class="fullnav-color-field" data-default-color="#666666" /></td>
         </tr>
+        </tbody>
         <!-- SOCIAL OPTIONS --> 
-        <?php } else if ($active_tab == 'social_options') { ?>
+        <tbody class="<?php echo $active_tab == 'social_options' ? 'shift8-fullnav-admin-tab-active' : 'shift8-fullnav-admin-tab-inactive'; ?>">
         <tr valign="top">
         <th scope="row">Social Media Links</th>
 	</tr>
@@ -253,7 +256,7 @@ $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'core_options';
         <tr valign="top">
         <td>Linkedin : </td><td><input type="text" name="shift8_fullnav_social_linkedin" value="<?php echo esc_attr( get_option('shift8_fullnav_social_linkedin') ); ?>" /></td>
         </tr>
-        <?php } ?>
+        </tbody>
     </table>
     
     <?php submit_button(); ?>

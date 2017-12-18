@@ -76,3 +76,10 @@ input:checked + .slider:before {
 	width:100%; 
 	border-bottom: 6px solid #c1c1c1;
 }
+
+.shift8-fullnav-admin-tab-active {
+    display:block;
+}
+.shift8-fullnav-admin-tab-inactive {
+    display:none;
+}
