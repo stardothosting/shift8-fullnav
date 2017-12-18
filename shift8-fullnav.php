@@ -3,7 +3,7 @@
  * Plugin Name: Shift8 Full Nav
  * Plugin URI: https://github.com/stardothosting/shift8-fullnav
  * Description: This plugin adds a sticky menu to your site. When the menu is clicked it expands to the full screen
- * Version: 1.41
+ * Version: 1.42
  * Author: Shift8 Web 
  * Author URI: https://www.shift8web.ca
  * License: GPLv3
@@ -34,7 +34,15 @@ function shift8_fullnav_settings_page() {
 ?>
 <div class="wrap">
 <h2>Shift8 Full Nav Settings</h2>
-<?php if (is_admin()) { ?>
+<?php if (is_admin()) {
+$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'core_options';
+?>
+<h2 class="nav-tab-wrapper">
+    <a href="?page=shift8-fullnav%2Fcomponents%2Fsettings.php%2Fcustom&tab=core_options" class="nav-tab <?php echo $active_tab == 'core_options' ? 'nav-tab-active' : ''; ?>">Core Options</a>
+    <a href="?page=shift8-fullnav%2Fcomponents%2Fsettings.php%2Fcustom&tab=font_options" class="nav-tab <?php echo $active_tab == 'font_options' ? 'nav-tab-active' : ''; ?>">Font Options</a>
+    <a href="?page=shift8-fullnav%2Fcomponents%2Fsettings.php%2Fcustom&tab=design_options" class="nav-tab <?php echo $active_tab == 'design_options' ? 'nav-tab-active' : ''; ?>">Design Options</a>
+    <a href="?page=shift8-fullnav%2Fcomponents%2Fsettings.php%2Fcustom&tab=social_options" class="nav-tab <?php echo $active_tab == 'social_options' ? 'nav-tab-active' : ''; ?>">Social Options</a>
+</h2>
 <form method="post" action="options.php">
     <?php settings_fields( 'shift8-fullnav-settings-group' ); ?>
     <?php do_settings_sections( 'shift8-fullnav-settings-group' ); ?>
@@ -53,6 +61,8 @@ function shift8_fullnav_settings_page() {
 	}
 	?>
     <table class="form-table">
+    <!-- CORE SETTINGS -->
+    <?php if ($active_tab == 'core_options' ) { ?>
 	<tr valign="top">
 	<th scope="row">Core Settings</th>
 	</tr>
@@ -119,6 +129,8 @@ function shift8_fullnav_settings_page() {
 		<td><img src="<?php echo $fullnav_logo_thumb[0]; ?>"></td>
 		<?php } ?>
         </tr>
+        <!-- FONT OPTIONS -->
+        <?php } else if ($active_tab == 'font_options') { ?>
         <tr valign="top">
         <th scope="row">Font Options</th>
         </tr>
@@ -192,6 +204,8 @@ function shift8_fullnav_settings_page() {
         <tr valign="top">
         <td>Menu Dropdown Font Size : </td><td><input size="6" type="text" name="shift8_fullnav_drp_font_siz" value="<?php echo esc_attr( get_option('shift8_fullnav_drp_font_siz') ); ?>" /> (px)</td>
         </tr>
+        <!-- DESIGN OPTIONS -->
+        <?php } else if ($active_tab == 'design_options') { ?>
         <tr valign="top">
         <th scope="row">Design Options</th>
 	</tr>
@@ -219,7 +233,8 @@ function shift8_fullnav_settings_page() {
         <tr valign="top">
         <td>Menu Sub Dropdown Hover Color :</td><td><input type="text" name="shift8_fullnav_design_drp_subhvr" value="<?php echo esc_attr( get_option('shift8_fullnav_design_drp_subhvr') ); ?>" class="fullnav-color-field" data-default-color="#666666" /></td>
         </tr>
-        
+        <!-- SOCIAL OPTIONS --> 
+        <?php } else if ($active_tab == 'social_options') { ?>
         <tr valign="top">
         <th scope="row">Social Media Links</th>
 	</tr>
@@ -238,6 +253,7 @@ function shift8_fullnav_settings_page() {
         <tr valign="top">
         <td>Linkedin : </td><td><input type="text" name="shift8_fullnav_social_linkedin" value="<?php echo esc_attr( get_option('shift8_fullnav_social_linkedin') ); ?>" /></td>
         </tr>
+        <?php } ?>
     </table>
     
     <?php submit_button(); ?>

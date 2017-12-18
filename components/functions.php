@@ -22,6 +22,15 @@ function add_shift8_fullnav_menu() {
 			}
 		}
 
+        if (!empty($locations)) {
+            foreach ($locations as $locationId => $menuValue) {
+                if (has_nav_menu($locationId) && $menuValue == $chosen_menu) {
+                    $shift8_fullnav_menu = $locationId;
+                } else if (has_nav_menu($locationId)) {
+                    $shift8_fullnav_menu = $locationId;
+                }
+            }
+        }
         $menu_locations = get_nav_menu_locations();
         $menu_id = $menu_locations[ $shift8_fullnav_menu ] ;
         $menu_array = wp_get_nav_menu_items($menu_id);
