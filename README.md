@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.8
-* Stable tag: 1.44
+* Stable tag: 1.45
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -215,3 +215,6 @@ p.
 
 ### 1.44
 * Fixed problem with admin plugin settings url changing between dev and prod plugin environments
+
+### 1.45
+* Fixed bug in location foreach loop to build location and menu value array ultimately to walk the navigation and build the menu

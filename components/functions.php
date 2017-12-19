@@ -7,30 +7,22 @@ function add_shift8_fullnav_menu() {
         $locations = get_theme_mod( 'nav_menu_locations' );
         $shift8_fullnav_menu = array();
 
-		foreach ($locations as $menuValue => $locationId) {
-			if ($chosen_menu == $menuValue) {
-				$location_obj = wp_get_nav_menu_object( $locationId );
-				$shift8_fullnav_menu = array(
-					'location_id' => $locationId,
-					'location_name' => $menuValue,
-					);
-			} else if (has_nav_menu($locationId)) {
-                    $shift8_fullnav_menu = array(
-                        'location_id' => $locationId,
-                        'location_name' => $menuValue,
-                    );
-			}
-		}
-
         if (!empty($locations)) {
-            foreach ($locations as $locationId => $menuValue) {
+            foreach ($locations as $menuValue => $locationId) {
                 if (has_nav_menu($locationId) && $menuValue == $chosen_menu) {
-                    $shift8_fullnav_menu = $locationId;
+	                $shift8_fullnav_menu = array(
+	                    'location_id' => $locationId,
+	                    'location_name' => $menuValue,
+					);
                 } else if (has_nav_menu($locationId)) {
-                    $shift8_fullnav_menu = $locationId;
+	                $shift8_fullnav_menu = array(
+	                    'location_id' => $locationId,
+	                    'location_name' => $menuValue,
+					);
                 }
             }
         }
+
         $menu_locations = get_nav_menu_locations();
         $menu_id = $menu_locations[ $shift8_fullnav_menu ] ;
         $menu_array = wp_get_nav_menu_items($menu_id);
