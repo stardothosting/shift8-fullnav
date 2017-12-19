@@ -168,7 +168,7 @@ function shift8_fullnav_scripts() {
 
 		@media only screen and (max-width: {$shift8_fullnav_mobilebreak}px) {
             .fn-logo {
-                width: 90%;
+                max-width: 60%;
             }
 			.fn-secondary-nav {
 				display: none;
