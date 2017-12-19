@@ -13,6 +13,9 @@ function shift8_fullnav_scripts() {
         $shift8_fullnav_bar_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_bar_col') ), $opacity = esc_attr( get_option('shift8_fullnav_design_bar_tra')));
         $shift8_fullnav_ovr_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_ovr_col') ), $opacity = esc_attr( get_option('shift8_fullnav_design_ovr_tra')));
 
+        // Menu bar logo width
+        $shift8_fullnav_logowidth = (esc_attr( get_option('shift8_fullnav_logowidth') ) ? esc_attr( get_option('shift8_fullnav_logowidth') ) : '150');
+
         // Dropdown hover & colors
         $shift8_fullnav_drp_color = (esc_attr( get_option('shift8_fullnav_design_drp_bak') ) ? esc_attr( get_option('shift8_fullnav_design_drp_bak') ) : '#212121');
         $shift8_fullnav_drp_hover_color = (esc_attr( get_option('shift8_fullnav_design_drp_hvr') ) ? esc_attr( get_option('shift8_fullnav_design_drp_hvr') ) : '#3e3c3c');
@@ -158,10 +161,15 @@ function shift8_fullnav_scripts() {
 		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {
 			.fn-logo {
 				left: 2.6em;
+                width: {$shift8_fullnav_logowidth}px;
+                height: auto;
 			}
 		}
 
 		@media only screen and (max-width: {$shift8_fullnav_mobilebreak}px) {
+            .fn-logo {
+                width: 90%;
+            }
 			.fn-secondary-nav {
 				display: none;
 			}

@@ -20,6 +20,7 @@ function register_shift8_fullnav_settings() {
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_mobilebreak' );
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_navlocation' );
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_logo' );
+    register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_logowidth' );
 
     // options for menu fonts
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_bar_font' );
