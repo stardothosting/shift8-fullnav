@@ -102,23 +102,19 @@ function shift8_fullnav_scripts() {
         .shift8-social {
             color: {$shift8_fullnav_ovr_font_color};
         }
-		.fn-arrow-up {
-			width: 0;
-			height: 0;
-			border-left: 8px solid transparent;
-			border-right: 8px solid transparent;
-			border-bottom: 8px solid {$shift8_fullnav_ovr_font_color};
+		.fn-arrow-up:before {
+            font-family: FontAwesome;
+            content: '\\f077';
+            color: {$shift8_fullnav_ovr_font_color};
 			position:absolute;
-			margin-top:10px;
+			margin-top:5px;
 		}
-		.fn-arrow-down {
-			width: 0;
-			height: 0;
-			border-left: 8px solid transparent;
-			border-right: 8px solid transparent;
-			border-top: 8px solid {$shift8_fullnav_ovr_font_color};
+		.fn-arrow-down:before {
+            font-family: FontAwesome;
+            content: '\\f078';
+            color: {$shift8_fullnav_ovr_font_color};
 			position:absolute;
-			margin-top:10px;
+			margin-top:5px;
 		}
 
 		/* responsive */

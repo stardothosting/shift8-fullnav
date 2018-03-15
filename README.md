@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.8
-* Stable tag: 1.47
+* Stable tag: 1.48
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -224,3 +224,6 @@ p.
 
 ### 1.47
 * Changed max width for mobile logo setting
+
+### 1.48
+* Mobile version of menu was not showing arrow indicator for sub menu items
