@@ -56,7 +56,7 @@ function add_shift8_fullnav_menu() {
         'container' => 'nav',
         'container_class' => 'mobile-menu',
         'menu_class' => 'fn-primary-nav',
-        'depth' => '2',
+        //'depth' => '2',
 		'items_wrap' => shift8_mobile_social(),
         'walker'          => new Shift8_Walker_Nav_Menu_Mobile()
     ));
@@ -103,10 +103,10 @@ class Shift8_Walker_Nav_Menu_Mobile extends Walker_Nav_Menu {
 	private $curItem;
 
     function start_lvl(&$output, $depth = 0, $args = array()) {
-        if ($depth == "0") {
-            $output .= "<span id=\"fn-arrow-dropdown\" class=\"fn-arrow-down\"></span>";
-            $output .= "<ul class=\"fn-mobile-dropdown-content fn-mobile-dropdown-content-" . $this->curItem->ID . " level-".$depth."\">\n";
-        } else if ($depth == "1") {
+        if ($depth >= "0") {
+            $output .= "<a id=\"fn-arrow-dropdown-" . $this->curItem->ID . "\" class=\"fn-arrow-down fn-sublevel-trigger fn-arrow-level-" . $depth . "\" href=\"#\"></a>";
+            $output .= "<ul id=\"fn-mobile-dropdown-content-" . $this->curItem->ID . "\" class=\"fn-mobile-dropdown-content fn-mobile-dropdown-content-" . $this->curItem->ID . " level-".$depth."\">\n";
+        } else {
             $output .= null;
         }
     }
@@ -130,19 +130,24 @@ class Shift8_Walker_Nav_Menu_Mobile extends Walker_Nav_Menu {
 
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
 
-		if (!$depth) {
-			$output .= '<script>
-                    		jQuery(".fn-menu-mobile-parent-item-' . $item->ID . '").click( function() {
-							if (jQuery(".fn-menu-mobile-parent-item-' . $item->ID . ' #fn-arrow-dropdown").hasClass("fn-arrow-down")) {
-								jQuery(".fn-menu-mobile-parent-item-' . $item->ID . ' #fn-arrow-dropdown").removeClass("fn-arrow-down");
-								jQuery(".fn-menu-mobile-parent-item-' . $item->ID . ' #fn-arrow-dropdown").addClass("fn-arrow-up");
-							} else {
-								jQuery(".fn-menu-mobile-parent-item-' . $item->ID . ' #fn-arrow-dropdown").removeClass("fn-arrow-up");
-								jQuery(".fn-menu-mobile-parent-item-' . $item->ID . ' #fn-arrow-dropdown").addClass("fn-arrow-down");
-							}
-							jQuery(".fn-mobile-dropdown-content-' . $item->ID . '").slideToggle();
-					});
-					</script>';
+		if ($depth >= 0) {
+			$output .= '
+            <script>
+            jQuery( document ).ready(function() {
+                jQuery(\'#fn-arrow-dropdown-' . $item->ID . '\').click( function(event) {
+                    var menuID = event.target.id.split("-");
+        			if (jQuery(this).hasClass("fn-arrow-down")) {
+        				jQuery(this).removeClass("fn-arrow-down");
+        				jQuery(this).addClass("fn-arrow-up");
+        			} else {
+        				jQuery(this).removeClass("fn-arrow-up");
+        				jQuery(this).addClass("fn-arrow-down");
+        			}
+                    jQuery("#fn-mobile-dropdown-content-' . $item->ID . '").slideToggle();
+    	       });
+            });
+			</script>
+            ';
 		}
 	} 
 }
