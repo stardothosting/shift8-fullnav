@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 	});
 
 	//open/close primary navigation if menu option is clicked
-    $('.mobile-menu li a').not('.fn-sublevel-trigger').on('click', function(){
+    $('.mobile-menu li:not(:has(.fn-sublevel-trigger))').not('.fn-sublevel-trigger').on('click', function(event){
         $('.fn-menu-icon').toggleClass('is-clicked');
         $('.fn-header').toggleClass('menu-is-open');
         //in firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden

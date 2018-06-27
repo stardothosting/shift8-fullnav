@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 4.8
-* Stable tag: 1.50
+* Stable tag: 1.51
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -233,3 +233,6 @@ p.
 
 ### 1.50
 * Fix jQuery nav open/close trigger if the menu option is an anchor tag
+
+### 1.51
+* Adjust query nav open/close trigger if anchor tag is present to be if there is sub menus present to negate if you wanted it to expand the menu option
