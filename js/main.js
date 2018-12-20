@@ -63,7 +63,6 @@ jQuery(document).ready(function($){
         subnav_container();
     });
 
-
     // Sub Sub nav behavior
     /*function subsubnav() {
         $("[class^=fn-dropdown-subsubnav]").each(function(index, value){
