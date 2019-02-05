@@ -67,7 +67,7 @@ function shift8_fullnav_scripts() {
 			font-size: {$shift8_fullnav_bar_font_size};
                         color : {$shift8_fullnav_bar_font_color};
                 }
-                .fn-primary-nav-trigger {
+                .fn-primary-nav-trigger, .header-cart-count-mobile {
                         color: {$shift8_fullnav_bar_font_color};
                 }
                 .fn-menu-icon, .fn-menu-icon::after, .fn-menu-icon::before, .fn-primary-nav-trigger .fn-menu-icon.is-clicked::before, .fn-primary-nav-trigger .fn-menu-icon.is-clicked::after {

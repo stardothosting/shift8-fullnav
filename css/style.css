@@ -79,6 +79,15 @@
   height: 100%;
   width: 50px;
 }
+.fn-primary-nav-trigger-shop {
+  right: 40px !important;
+}
+.header-cart-count-mobile {
+  position:absolute;
+  float: right;
+  right:10px;
+  top:15px;
+}
 .fn-primary-nav-trigger .fn-menu-text {
   text-transform: uppercase;
   font-weight: 700;

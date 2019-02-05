@@ -27,11 +27,22 @@ function add_shift8_fullnav_menu() {
         $menu_id = $menu_locations[ $shift8_fullnav_menu ] ;
         $menu_array = wp_get_nav_menu_items($menu_id);
 
+        if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+            $count = WC()->cart->cart_contents_count;
+            $shopping = '<a class="title header-cart-count-mobile" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . esc_html( $count ) . '</a>';
+			$trigger_class = 'fn-primary-nav-trigger-shop';
+        } else {
+			$shopping = null;
+			$trigger_class = null;
+		}
+
         echo '<header class="fn-header is-visible is-fixed">
         <div class="fn-logo"><a href="' . get_site_url() . '"><img src="' . esc_attr( get_option('shift8_fullnav_logo')) . '" alt="Logo"></a></div>
-        <a class="fn-primary-nav-trigger" href="#0">
+		' . $shopping . '
+        <a class="fn-primary-nav-trigger ' . $trigger_class . '" href="#0">
         <span class="fn-menu-text">Menu</span><span class="fn-menu-icon"></span>
         </a>';
+
 	$count = 0;
 	$submenu = false;
 	$first_level = $first_levels = $second_level = $second_levels = null;
