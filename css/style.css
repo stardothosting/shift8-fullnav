@@ -80,13 +80,13 @@
   width: 50px;
 }
 .fn-primary-nav-trigger-shop {
-  right: 40px !important;
+  right: 45px !important;
 }
 .header-cart-count-mobile {
   position:absolute;
   float: right;
   right:10px;
-  top:15px;
+  top:14px;
 }
 .fn-primary-nav-trigger .fn-menu-text {
   text-transform: uppercase;
