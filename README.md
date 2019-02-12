@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 5.0.2
-* Stable tag: 1.54
+* Stable tag: 1.55
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -245,3 +245,6 @@ p.
 
 ### 1.54
 * Minor CSS fix
+
+### 1.55
+* Fixed bug where shopping cart for mobile and desktop both were showing up at the same time

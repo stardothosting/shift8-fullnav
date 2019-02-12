@@ -166,12 +166,19 @@ function shift8_fullnav_scripts() {
             .fn-logo {
                 max-width: 60%;
             }
+            .header-cart-count-mobile {
+                display: block;
+            }
+            .header-cart-count {
+                display:none;
+            }
 			.fn-secondary-nav {
 				display: none;
 			}
 			.fn-primary-nav-trigger, .fn-primary-nav-trigger .fn-menu-text {
 				dispaly:block;
 			}
+    
 		}
 
 		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {

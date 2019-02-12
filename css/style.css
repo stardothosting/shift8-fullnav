@@ -83,6 +83,7 @@
   right: 45px !important;
 }
 .header-cart-count-mobile {
+  display:none;
   position:absolute;
   float: right;
   right:10px;
