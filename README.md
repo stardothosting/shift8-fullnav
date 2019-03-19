@@ -1,14 +1,14 @@
 # Shift8 Full Nav
 * Contributors: shift8
 * Donate link: https://www.shift8web.ca
-* Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
+* Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu,woocommerce,search
 * Requires at least: 3.0.1
-* Tested up to: 5.0.2
+* Tested up to: 5.1.1
 * Stable tag: 1.56
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Plugin that integrates a sticky navigation bar that expands to the full screen when open.
+Plugin that integrates a sticky navigation bar that expands to the full screen when open. This plugin will work with up to 3 levels of dropdown (parent, child, sub-child). It will also display a shopping cart icon and cart count if it detects you have Woocommerce installed. Lastly if you want to have a search dropdown, you can enable search and an icon will display with a search bar dropdown from the top navigation.
 
 ## Want to see the plugin in action?
 
@@ -37,6 +37,12 @@ You can change the color and opacity of the menu bar as well as the mobile flyou
 
 - Dropdown functionality out of the box
 If you have parent/child menu items, they will be automatically rendered as dropdown for mobile/desktop view of the menu. You can change color and styling of the dropdown for desktop as well
+
+- Woocommerce compatibility
+The shopping cart icon will automatically display if it detects that you have Woocommerce installed and activated. A simple cart icon with a cart count will be displayed
+
+- Search dropdown icon
+We now give you the option to display a search dropdown toggle area , right underneath the navigation bar. There are design options that will allow you to configure how this looks such as background color, font size, color, hover colors and whatnot. This is a quick and easy way to integrate search into your navigation.
 
 ## Remember : Dont forget to set the switch "Enable Full Nav" after installing and activating!
 

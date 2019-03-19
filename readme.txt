@@ -1,9 +1,9 @@
 === Shift8 Full Nav ===
 Contributors: shift8 
 Donate link: https://www.shift8web.ca
-Tags: sticky navigation, sticky nav, full width nav, sticky menu, full width menu, modal menu, full screen modal menu, full screen modal navigation, full screen nav, css navigation,responsive sticky nav, responsive sticky navigation, responsive sticky menu, responsive menu, responsive nav,responsive,navigation,menu
+Tags: sticky navigation, sticky nav, full width nav, sticky menu, full width menu, modal menu, full screen modal menu, full screen modal navigation, full screen nav, css navigation,responsive sticky nav, responsive sticky navigation, responsive sticky menu, responsive menu, responsive nav,responsive,navigation,menu,woocommerce,search
 Requires at least: 3.0.1
-Tested up to: 5.0.2
+Tested up to: 5.1.1
 Stable tag: 1.57
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -14,7 +14,7 @@ This plugin implements a very simple and clean sticky navigation bar. The naviga
 
 [Shift8](https://www.shift8web.ca) Full Nav is a plugin that allows you to create a full width, sticky and responsive navigation menu. The plugin allows you to define key design options such as menu color, google fonts for menu options, overlay color (for mobile dropdown) and menu/overlay transparency.
 
-There are planned features for future releases such as dropdown effects for second level menu options. This plugin is based on the full screen pop out navigation by [Codyhouse](https://codyhouse.co/gem/full-screen-pop-out-navigation/).
+This plugin will work with up to 3 levels of dropdown (parent, child, sub-child). It will also display a shopping cart icon and cart count if it detects you have Woocommerce installed. Lastly if you want to have a search dropdown, you can enable search and an icon will display with a search bar dropdown from the top navigation. 
 
 = Want to see the plugin in action? =
 
@@ -49,6 +49,14 @@ You can change the color and opacity of the menu bar as well as the mobile flyou
 * Dropdown functionality out of the box
 
 If you have parent/child menu items, they will be automatically rendered as dropdown for mobile/desktop view of the menu. You can change color and styling of the dropdown for desktop as well
+
+* Woocommerce compatibility 
+
+The shopping cart icon will automatically display if it detects that you have Woocommerce installed and activated. A simple cart icon with a cart count will be displayed
+
+* Search dropdown icon
+
+We now give you the option to display a search dropdown toggle area , right underneath the navigation bar. There are design options that will allow you to configure how this looks such as background color, font size, color, hover colors and whatnot. This is a quick and easy way to integrate search into your navigation.
 
 **Remember : Dont forget to set the switch "Enable Full Nav" after installing and activating!**
 
