@@ -253,3 +253,6 @@ p.
 * Added admin option for main content container top padding to ensure content is enough below the nav bar
 * Added admin option and logic to display a search icon which will reveal a search box below the nav menu
 * Added admin options to customize the design of the search dropdown bar
+
+### 1.57
+* Mouse icon will change to pointer when hovering search icon now

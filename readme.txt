@@ -4,7 +4,7 @@ Donate link: https://www.shift8web.ca
 Tags: sticky navigation, sticky nav, full width nav, sticky menu, full width menu, modal menu, full screen modal menu, full screen modal navigation, full screen nav, css navigation,responsive sticky nav, responsive sticky navigation, responsive sticky menu, responsive menu, responsive nav,responsive,navigation,menu
 Requires at least: 3.0.1
 Tested up to: 5.0.2
-Stable tag: 1.56
+Stable tag: 1.57
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -277,3 +277,6 @@ We do [web design](https://www.shift8web.ca "Toronto Web Design") , development 
 * Added admin option for main content container top padding to ensure content is enough below the nav bar
 * Added admin option and logic to display a search icon which will reveal a search box below the nav menu
 * Added admin options to customize the design of the search dropdown bar
+
+= 1.57 =
+* Mouse icon will change to pointer when hovering search icon now

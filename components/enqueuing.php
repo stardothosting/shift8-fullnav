@@ -133,6 +133,9 @@ function shift8_fullnav_scripts() {
 		}
         
         /* Search */
+        .shift8-fullnav-search:hover {
+            cursor:pointer;
+        }
         .shift8-fullnav-search-dropdown {
             display:none;
             z-index:9999;
