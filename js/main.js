@@ -63,20 +63,13 @@ jQuery(document).ready(function($){
         subnav_container();
     });
 
-    // Sub Sub nav behavior
-    /*function subsubnav() {
-        $("[class^=fn-dropdown-subsubnav]").each(function(index, value){
-            var parent_id = $(this).data('parent');
-            $("[data-id=" + parent_id +"]").append(this);
-        });
-    }
-
-    function subsubnav_container() {
-        $(".fn-dropdown-subsubnav").wrapAll("<ul class=\"fn-dropdown-subcontent\"></ul>");
-    }
-    var second_deferred = subsubnav();
-    $.when(second_deferred).done(function() {
-        subsubnav_container();
-    });*/
+    // Search icon trigger
+    jQuery('.shift8-fullnav-search').click(function(){
+      jQuery(this).find('i').toggleClass('search-close','fa-search');
+      jQuery('.shift8-fullnav-search-dropdown').animate({
+        height: 'toggle',
+        opacity: 'toggle'
+      });
+    });
 
 })

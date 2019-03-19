@@ -54,7 +54,7 @@ function add_shift8_fullnav_menu() {
 	    'container' => 'nav',
         'container_class' => 'desktop-menu',
         'menu_class' => 'fn-secondary-nav',
-        'items_wrap' => shift8_woocommerce_icon(),
+        'items_wrap' => shift8_woocommerce_search_icon(),
         'walker'          => new Shift8_Walker_Nav_Menu_Desktop()
 	 ));
 
@@ -164,7 +164,7 @@ class Shift8_Walker_Nav_Menu_Mobile extends Walker_Nav_Menu {
 }
 
 // Generate Woocommerce shopping cart icon if installed
-function shift8_woocommerce_icon() {
+function shift8_woocommerce_search_icon() {
 
     // open the <ul>, set 'menu_class' and 'menu_id' values
     $wrap  = '<ul id="%1$s" class="%2$s">';
@@ -177,6 +177,12 @@ function shift8_woocommerce_icon() {
 		$count = WC()->cart->cart_contents_count;
 		$wrap .= '<li class="fn-dropdown"><a class="title header-cart-count" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . esc_html( $count ) . '</a></li>';
 	}
+
+    if (esc_attr( get_option('shift8_fullnav_search') ) == 'on') { 
+        $wrap .= '<li class="fn-dropdown"><a class="shift8-fullnav-search"><i class="fas fa-search"></i></a></li>';
+    }
+
+    // Add search icon if enabled
 	
 	$wrap .= '</ul>';
 	
@@ -306,4 +312,12 @@ function shift8_multi_search($array, $key, $value) {
 	}
 
 	return $results;
+}
+
+
+// Add search dropdown
+function add_shift8_search_dropdown() {
+    echo '<div class="shift8-fullnav-search-dropdown" style="display:none;">';
+    get_search_form();
+    echo '</div>';
 }

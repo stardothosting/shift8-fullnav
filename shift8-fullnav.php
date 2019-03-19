@@ -3,7 +3,7 @@
  * Plugin Name: Shift8 Full Nav
  * Plugin URI: https://github.com/stardothosting/shift8-fullnav
  * Description: This plugin adds a sticky menu to your site. When the menu is clicked it expands to the full screen
- * Version: 1.55
+ * Version: 1.56
  * Author: Shift8 Web 
  * Author URI: https://www.shift8web.ca
  * License: GPLv3
@@ -43,6 +43,9 @@ $plugin_name = $plugin_data['TextDomain'];
     <a href="?page=<?php echo $plugin_name; ?>%2Fcomponents%2Fsettings.php%2Fcustom&tab=core_options" class="nav-tab <?php echo $active_tab == 'core_options' ? 'nav-tab-active' : ''; ?>">Core Options</a>
     <a href="?page=<?php echo $plugin_name; ?>%2Fcomponents%2Fsettings.php%2Fcustom&tab=font_options" class="nav-tab <?php echo $active_tab == 'font_options' ? 'nav-tab-active' : ''; ?>">Font Options</a>
     <a href="?page=<?php echo $plugin_name; ?>%2Fcomponents%2Fsettings.php%2Fcustom&tab=design_options" class="nav-tab <?php echo $active_tab == 'design_options' ? 'nav-tab-active' : ''; ?>">Design Options</a>
+    <?php if (esc_attr( get_option('shift8_fullnav_search') ) == 'on') { ?>
+    <a href="?page=<?php echo $plugin_name; ?>%2Fcomponents%2Fsettings.php%2Fcustom&tab=search_options" class="nav-tab <?php echo $active_tab == 'search_options' ? 'nav-tab-active' : ''; ?>">Search Options</a>
+    <?php } ?>
     <a href="?page=<?php echo $plugin_name; ?>%2Fcomponents%2Fsettings.php%2Fcustom&tab=social_options" class="nav-tab <?php echo $active_tab == 'social_options' ? 'nav-tab-active' : ''; ?>">Social Options</a>
 </h2>
 <form method="post" action="options.php">
@@ -101,6 +104,23 @@ $plugin_name = $plugin_data['TextDomain'];
         </td>
 	</th>
 	</tr>
+    <tr valign="top">
+        <td>Enable Search Dropdown : </td>
+        <td>
+        <?php
+        if (esc_attr( get_option('shift8_fullnav_search') ) == 'on') {
+                $search_enabled_checked = "checked";
+        } else {
+                $search_enabled_checked = "";
+        }
+        ?>
+                <label class="switch">
+                <input type="checkbox" name="shift8_fullnav_search" <?php echo $search_enabled_checked; ?>>
+                <div class="slider round"></div>
+                </label>
+        </td>
+    </th>
+    </tr>
         <tr valign="top">
         <td>Select a Nav Menu to use : </td>
         <td>
@@ -117,6 +137,9 @@ $plugin_name = $plugin_data['TextDomain'];
                 </select>
         </div>
         </td>
+        </tr>
+        <tr valign="top">
+        <td>Main content top padding : </td><td><input size="6" type="text" name="shift8_fullnav_toppadding" value="<?php echo esc_attr( get_option('shift8_fullnav_toppadding') ); ?>" /> (px)</td>
         </tr>
         <tr valign="top">
         <td>Screen width mobile breakpoint : </td><td><input size="6" type="text" name="shift8_fullnav_mobilebreak" value="<?php echo esc_attr( get_option('shift8_fullnav_mobilebreak') ); ?>" /> (px)</td>
@@ -262,6 +285,33 @@ $plugin_name = $plugin_data['TextDomain'];
         <td>Linkedin : </td><td><input type="text" name="shift8_fullnav_social_linkedin" value="<?php echo esc_attr( get_option('shift8_fullnav_social_linkedin') ); ?>" /></td>
         </tr>
         </tbody>
+        <!-- SEARCH OPTIONS -->
+        <tbody class="<?php echo $active_tab == 'search_options' ? 'shift8-fullnav-admin-tab-active' : 'shift8-fullnav-admin-tab-inactive'; ?>">
+        <tr valign="top">
+        <th scope="row">Search Options</th>
+		</tr>
+        <tr valign="top">
+        <td>Search box position from top : </td><td><input size="6" type="text" name="shift8_fullnav_search_top" value="<?php echo esc_attr( get_option('shift8_fullnav_search_top') ); ?>" /> (px)</td>
+        </tr>
+        <tr valign="top">
+        <td>Search box background color :</td><td><input type="text" name="shift8_fullnav_search_background" value="<?php echo esc_attr( get_option('shift8_fullnav_search_background') ); ?>" class="fullnav-color-field" data-default-color="#2F2F2F" /></td>
+        </tr>
+        <tr valign="top">
+        <td>Search box submit button background color :</td><td><input type="text" name="shift8_fullnav_search_button_background" value="<?php echo esc_attr( get_option('shift8_fullnav_search_button_background') ); ?>" class="fullnav-color-field" data-default-color="#305FFF" /></td>
+        </tr>
+        <tr valign="top">
+        <td>Search box submit button font color :</td><td><input type="text" name="shift8_fullnav_search_button_font_col" value="<?php echo esc_attr( get_option('shift8_fullnav_search_button_font_col') ); ?>" class="fullnav-color-field" data-default-color="#305FFF" /></td>
+        </tr>
+        <tr valign="top">
+        <td>Search box submit button font size : </td><td><input size="6" type="text" name="shift8_fullnav_search_button_font_siz" value="<?php echo esc_attr( get_option('shift8_fullnav_search_button_font_siz') ); ?>" /> (px)</td>
+        </tr>
+        <tr valign="top">
+        <td>Search box submit button hover color :</td><td><input type="text" name="shift8_fullnav_search_button_hover" value="<?php echo esc_attr( get_option('shift8_fullnav_search_button_hover') ); ?>" class="fullnav-color-field" data-default-color="#000000" /></td>
+        </tr>
+        <tr valign="top">
+        <td>Search box submit button hover font color :</td><td><input type="text" name="shift8_fullnav_search_button_hover_font_col" value="<?php echo esc_attr( get_option('shift8_fullnav_search_button_hover_font_col') ); ?>" class="fullnav-color-field" data-default-color="#fff" /></td>
+        </tr>
+        </tbody>
     </table>
     
     <?php submit_button(); ?>
@@ -275,4 +325,9 @@ $plugin_name = $plugin_data['TextDomain'];
 // add the menu if its switched on
 if (esc_attr( get_option('shift8_fullnav_enabled') ) == 'on') {
 	add_action('wp_footer', 'add_shift8_fullnav_menu', 1);
+}
+
+// add search code to header if its switched on
+if (esc_attr( get_option('shift8_fullnav_search') ) == 'on') {
+    add_action('wp_footer', 'add_shift8_search_dropdown', 1);
 }

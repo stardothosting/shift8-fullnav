@@ -1,3 +1,3 @@
 jQuery(document).ready(function($){
-    $('.fullnav-color-field').wpColorPicker();
+    $(".fullnav-color-field").wpColorPicker();
 });

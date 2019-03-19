@@ -22,6 +22,18 @@ function shift8_fullnav_scripts() {
         $shift8_fullnav_drp_subcolor = (esc_attr( get_option('shift8_fullnav_design_drp_subbak') ) ? esc_attr( get_option('shift8_fullnav_design_drp_subbak') ) : '#212121');
         $shift8_fullnav_drp_subhover_color = (esc_attr( get_option('shift8_fullnav_design_drp_subhvr') ) ? esc_attr( get_option('shift8_fullnav_design_drp_subhvr') ) : '#3e3c3c');
 
+        // Content container top padding
+        $shift8_fullnav_content_toppadding = ( esc_attr( get_option('shift8_fullnav_toppadding') ) ? esc_attr( get_option('shift8_fullnav_toppadding') ) . 'px' : 'inherit');
+
+        // Search design options
+        $shift8_fullnav_search_top = ( esc_attr( get_option('shift8_fullnav_search_top') ) ? esc_attr( get_option('shift8_fullnav_search_top') ) . 'px' : 'inherit');
+        $shift8_fullnav_search_background = (esc_attr( get_option('shift8_fullnav_search_background') ) ? esc_attr( get_option('shift8_fullnav_search_background') ) : '#2F2F2F');
+        $shift8_fullnav_search_button_background = (esc_attr( get_option('shift8_fullnav_search_button_background') ) ? esc_attr( get_option('shift8_fullnav_search_button_background') ) : '#2F2F2F');
+        $shift8_fullnav_search_button_font_col = (esc_attr( get_option('shift8_fullnav_search_button_font_col') ) ? esc_attr( get_option('shift8_fullnav_search_button_font_col') ) : '#ffffff');
+        $shift8_fullnav_search_button_font_siz = ( esc_attr( get_option('shift8_fullnav_search_button_font_siz') ) ? esc_attr( get_option('shift8_fullnav_search_button_font_siz') ) . 'px' : 'inherit');
+        $shift8_fullnav_search_button_hover = (esc_attr( get_option('shift8_fullnav_search_button_hover') ) ? esc_attr( get_option('shift8_fullnav_search_button_hover') ) : '#000000');
+        $shift8_fullnav_search_button_hover_font_col = (esc_attr( get_option('shift8_fullnav_search_button_hover_font_col') ) ? esc_attr( get_option('shift8_fullnav_search_button_hover_font_col') ) : '#fff');
+
         // Load google fonts if necessary
         $shift8_fullnav_bar_font = (esc_attr( get_option('shift8_fullnav_bar_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_bar_font') ), 2));
         $shift8_fullnav_bar_font_color = (esc_attr( get_option('shift8_fullnav_bar_font_col') ) ? esc_attr( get_option('shift8_fullnav_bar_font_col') ) : 'inherit');
@@ -52,10 +64,13 @@ function shift8_fullnav_scripts() {
                 ";
         } else {
                 $shift8_fullnav_mobileonly_css = null;
-		$shift8_fullnav_mobilebreak = ( esc_attr( get_option('shift8_fullnav_mobilebreak') ) ? esc_attr( get_option('shift8_fullnav_mobilebreak') ) : '980');
+		        $shift8_fullnav_mobilebreak = ( esc_attr( get_option('shift8_fullnav_mobilebreak') ) ? esc_attr( get_option('shift8_fullnav_mobilebreak') ) : '980');
         }
 
         $shift8_fullnav_custom_css = "
+                .site-content {
+                    padding-top: {$shift8_fullnav_content_toppadding};
+                }
                 .fn-header {
                         background-color: {$shift8_fullnav_bar_color};
                 }
@@ -116,6 +131,44 @@ function shift8_fullnav_scripts() {
 			position:absolute;
 			margin-top:5px;
 		}
+        
+        /* Search */
+        .shift8-fullnav-search-dropdown {
+            display:none;
+            z-index:9999;
+            top: {$shift8_fullnav_search_top};
+            position:fixed;
+            width:100%;
+            text-align:right;
+            background-color: {$shift8_fullnav_search_background};
+        }
+        .shift8-fullnav-search-dropdown form {
+            float:right;
+            padding: 5px 0 5px 0;
+            margin: 0 5px 0 0;
+        }
+        .shift8-fullnav-search-dropdown .search-submit {
+            border: none;
+            background: {$shift8_fullnav_search_button_background};
+            color: {$shift8_fullnav_search_button_font_col};
+            text-align:center;
+            text-transform:capitalize;
+            margin: 0 auto;
+            padding: 15px 15px 12px 15px !important;
+            font-weight: 600;
+            font-size: {$shit8_fullnav_search_button_font_siz};
+            text-transform: uppercase !important;
+            border-radius: 0px !important;
+            margin: 0px !important;
+            z-index: 1;
+            text-decoration:none !important;
+        }
+        .shift8-fullnav-search-dropdown .search-submit:hover {
+            background: {$shift8_fullnav_search_button_hover};
+            color: {$shift8_fullnav_search_button_hover_font_col};
+            padding:15px 15px 12px 15px !important;
+            cursor: pointer;
+        }
 
 		/* responsive */
 		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {

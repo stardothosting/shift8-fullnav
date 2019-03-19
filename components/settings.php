@@ -22,6 +22,19 @@ function register_shift8_fullnav_settings() {
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_logo' );
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_logowidth' );
 
+    // options for search bar 
+	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search' );
+	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search_top' );
+	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search_background' );
+	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search_button_background' );
+	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search_button_font_col' );
+	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search_button_font_siz' );
+	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search_button_hover' );
+	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search_button_hover_font_col' );
+
+    // options for top padding for content
+    register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_toppadding' );
+
     // options for menu fonts
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_bar_font' );
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_bar_font_col' );

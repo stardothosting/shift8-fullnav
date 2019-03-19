@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu
 * Requires at least: 3.0.1
 * Tested up to: 5.0.2
-* Stable tag: 1.55
+* Stable tag: 1.56
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -248,3 +248,8 @@ p.
 
 ### 1.55
 * Fixed bug where shopping cart for mobile and desktop both were showing up at the same time
+
+### 1.56
+* Added admin option for main content container top padding to ensure content is enough below the nav bar
+* Added admin option and logic to display a search icon which will reveal a search box below the nav menu
+* Added admin options to customize the design of the search dropdown bar
