@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu,woocommerce,search
 * Requires at least: 3.0.1
 * Tested up to: 5.1.1
-* Stable tag: 1.56
+* Stable tag: 1.58
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -262,3 +262,6 @@ p.
 
 ### 1.57
 * Mouse icon will change to pointer when hovering search icon now
+
+### 1.58
+* Change get_site_url to get_home_url to accommodate translations for home logo link

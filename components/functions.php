@@ -37,7 +37,7 @@ function add_shift8_fullnav_menu() {
 		}
 
         echo '<header class="fn-header is-visible is-fixed">
-        <div class="fn-logo"><a href="' . get_site_url() . '"><img src="' . esc_attr( get_option('shift8_fullnav_logo')) . '" alt="Logo"></a></div>
+        <div class="fn-logo"><a href="' . get_home_url() . '"><img src="' . esc_attr( get_option('shift8_fullnav_logo')) . '" alt="Logo"></a></div>
 		' . $shopping . '
         <a class="fn-primary-nav-trigger ' . $trigger_class . '" href="#0">
         <span class="fn-menu-text">Menu</span><span class="fn-menu-icon"></span>
