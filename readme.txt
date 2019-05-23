@@ -22,7 +22,6 @@ You can view two example sites where this plugin is live :
 
 * Example Site 1 : [Wordpress Hosting](https://www.stackstar.com)
 * Example Site 2 : [Web Design](https://www.shift8web.ca)
-* Example Site 3 : [Dope mail](https://dopemail.com)
 
 = Features =
 
