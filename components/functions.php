@@ -179,7 +179,7 @@ function shift8_woocommerce_search_icon() {
 	}
 
     if (esc_attr( get_option('shift8_fullnav_search') ) == 'on') { 
-        $wrap .= '<li class="fn-dropdown"><a class="shift8-fullnav-search"><i class="fas fa-search"></i></a></li>';
+        $wrap .= '<li class="fn-dropdown"><a class="shift8-fullnav-search"><i class="fa fa-search"></i></a></li>';
     }
 
     // Add search icon if enabled
