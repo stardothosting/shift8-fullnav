@@ -12,7 +12,7 @@ This plugin implements a very simple and clean sticky navigation bar. The naviga
 
 == Description ==
 
-[Shift8](https://www.shift8web.ca) Full Nav is a plugin that allows you to create a full width, sticky and responsive navigation menu. The plugin allows you to define key design options such as menu color, google fonts for menu options, overlay color (for mobile dropdown) and menu/overlay transparency.
+[Shift8](https://www.shift8web.ca) Full Nav is a plugin that allows you to create a full width, sticky and responsive navigation menu. The plugin allows you to define key design options such as menu color, google fonts for menu options, overlay color (for mobile dropdown) and menu/overlay transparency and mobile menu trigger breakpoints.
 
 This plugin will work with up to 3 levels of dropdown (parent, child, sub-child). It will also display a shopping cart icon and cart count if it detects you have Woocommerce installed. Lastly if you want to have a search dropdown, you can enable search and an icon will display with a search bar dropdown from the top navigation. 
 
