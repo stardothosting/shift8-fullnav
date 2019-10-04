@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu,woocommerce,search
 * Requires at least: 3.0.1
 * Tested up to: 5.2.2
-* Stable tag: 1.60
+* Stable tag: 1.61
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -270,3 +270,6 @@ p.
 
 ### 1.60
 * Fixed search icon again
+
+### 1.61
+* Fixed warnings from dependency with google fonts, removed google fonts, added ability to enter font names to use, added ability to set menu bar height, added ability to set nav logo width on mobile

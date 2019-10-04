@@ -30,7 +30,7 @@ function shift8_fullnav_settings_page() {
 	$fullnav_logo = esc_attr( get_option('shift8_fullnav_logo'));
 	$fullnav_logo_id = shift8_fullnav_get_image_id($fullnav_logo);
 	$fullnav_logo_thumb = wp_get_attachment_image_src($fullnav_logo_id, 'thumbnail');
-	$fullnav_google_fonts = shift8_get_google_fonts();
+	$fullnav_google_fonts = null;
 ?>
 <div class="wrap">
 <h2>Shift8 Full Nav Settings</h2>
@@ -142,6 +142,9 @@ $plugin_name = $plugin_data['TextDomain'];
         <td>Main content top padding : </td><td><input size="6" type="text" name="shift8_fullnav_toppadding" value="<?php echo esc_attr( get_option('shift8_fullnav_toppadding') ); ?>" /> (px)</td>
         </tr>
         <tr valign="top">
+        <td>Main menu bar height : </td><td><input size="6" type="text" name="shift8_fullnav_barheight" value="<?php echo esc_attr( get_option('shift8_fullnav_barheight') ); ?>" /> (px)</td>
+        </tr>
+        <tr valign="top">
         <td>Screen width mobile breakpoint : </td><td><input size="6" type="text" name="shift8_fullnav_mobilebreak" value="<?php echo esc_attr( get_option('shift8_fullnav_mobilebreak') ); ?>" /> (px)</td>
         </tr>
         <tr valign="top">
@@ -157,6 +160,9 @@ $plugin_name = $plugin_data['TextDomain'];
         <tr valign="top">
         <td>Menu Bar Logo Width (height is auto) : </td><td><input size="6" type="text" name="shift8_fullnav_logowidth" value="<?php echo esc_attr( get_option('shift8_fullnav_logowidth') ); ?>" /> (px)</td>
         </tr>
+        <tr valign="top">
+        <td>Menu Bar Logo Width for Mobile (height is auto) : </td><td><input size="6" type="text" name="shift8_fullnav_logowidth_mobile" value="<?php echo esc_attr( get_option('shift8_fullnav_logowidth_mobile') ); ?>" /> (px)</td>
+        </tr>
         </tbody>
         <!-- FONT OPTIONS -->
         <tbody class="<?php echo $active_tab == 'font_options' ? 'shift8-fullnav-admin-tab-active' : 'shift8-fullnav-admin-tab-inactive'; ?>">
@@ -167,21 +173,7 @@ $plugin_name = $plugin_data['TextDomain'];
         <td>Menu Bar Font Color :</td><td><input type="text" name="shift8_fullnav_bar_font_col" value="<?php echo esc_attr( get_option('shift8_fullnav_bar_font_col') ); ?>" class="fullnav-color-field" data-default-color="#252525" /></td>
         </tr>
         <tr valign="top">
-        <td>Menu Bar Font : </td>
-	<td>
-		<div class="shift8-fullnav-select">
-		<select name="shift8_fullnav_bar_font">
-			<option>Site default font</option>
-			<?php
-                                foreach ($fullnav_google_fonts as $fullnav_google_font) {
-                                        $fullnav_google_font_item = esc_attr( $fullnav_google_font->family ) . ":" . implode(',', $fullnav_google_font->variants );
-                                        $selected = ($fullnav_google_font_item == get_option('shift8_fullnav_bar_font') ? 'selected' : '');
-                                        echo "<option value='" . $fullnav_google_font_item . "' " . $selected . ">" . esc_attr( $fullnav_google_font->family ) . "</option>";
-                                }
-			?>
-		</select> 
-		</div>
-	</td>
+        <td>Menu Bar Font : </td><td><input type="text" name="shift8_fullnav_bar_font" value="<?php echo (esc_attr( get_option('shift8_fullnav_bar_font')) ? esc_attr( get_option('shift8_fullnav_bar_font')) : 'inherit'); ?>" class=""></td>
         </tr>
         <tr valign="top">
         <td>Menu Bar Font Size : </td><td><input size="6" type="text" name="shift8_fullnav_bar_font_siz" value="<?php echo esc_attr( get_option('shift8_fullnav_bar_font_siz') ); ?>" /> (px)</td>
@@ -191,21 +183,7 @@ $plugin_name = $plugin_data['TextDomain'];
         <td>Menu Overlay Font color : </td><td><input type="text" name="shift8_fullnav_ovr_font_col" value="<?php echo esc_attr( get_option('shift8_fullnav_ovr_font_col') ); ?>" class="fullnav-color-field" data-default-color="#252525" /></td>
         </tr>
         <tr valign="top">
-        <td>Menu Overlay Font : </td>
-        <td>
-		<div class="shift8-fullnav-select">
-                <select name="shift8_fullnav_ovr_font">
-                        <option>Site default font</option>
-                        <?php
-                                foreach ($fullnav_google_fonts as $fullnav_google_font) {
-					$fullnav_google_font_item = esc_attr( $fullnav_google_font->family ) . ":" . implode(',', $fullnav_google_font->variants );
-					$selected = ($fullnav_google_font_item == get_option('shift8_fullnav_ovr_font') ? 'selected' : ''); 
-					echo "<option value='" . $fullnav_google_font_item . "' " . $selected . ">" . esc_attr( $fullnav_google_font->family ) . "</option>";
-                                }
-                        ?>
-                </select>
-		</div>
-        </td>
+        <td>Menu Overlay Font : </td><td><input type="text" name="shift8_fullnav_ovr_font" value="<?php echo (esc_attr( get_option('shift8_fullnav_ovr_font')) ? esc_attr( get_option('shift8_fullnav_ovr_font')) : 'inherit'); ?>" class=""></td>
         </tr>
         <td>Menu Overlay Font Size : </td><td><input size="6" type="text" name="shift8_fullnav_ovr_font_siz" value="<?php echo esc_attr( get_option('shift8_fullnav_ovr_font_siz') ); ?>" /> (px)</td>
         </tr>
@@ -214,21 +192,7 @@ $plugin_name = $plugin_data['TextDomain'];
         <td>Menu Dropdown Font Color :</td><td><input type="text" name="shift8_fullnav_drp_font_col" value="<?php echo esc_attr( get_option('shift8_fullnav_drp_font_col') ); ?>" class="fullnav-color-field" data-default-color="#252525" /></td>
         </tr>
         <tr valign="top">
-        <td>Menu Dropdown Font : </td>
-        <td>
-                <div class="shift8-fullnav-select">
-                <select name="shift8_fullnav_drp_font">
-                        <option>Site default font</option>
-                        <?php
-                                foreach ($fullnav_google_fonts as $fullnav_google_font) {
-                                        $fullnav_google_font_item = esc_attr( $fullnav_google_font->family ) . ":" . implode(',', $fullnav_google_font->variants );
-                                        $selected = ($fullnav_google_font_item == get_option('shift8_fullnav_drp_font') ? 'selected' : '');
-                                        echo "<option value='" . $fullnav_google_font_item . "' " . $selected . ">" . esc_attr( $fullnav_google_font->family ) . "</option>";
-                                }
-                        ?>
-                </select>
-                </div>
-        </td>
+        <td>Menu Dropdown Font : </td><td><input type="text" name="shift8_fullnav_drp_font" value="<?php echo (esc_attr( get_option('shift8_fullnav_drp_font')) ? esc_attr( get_option('shift8_fullnav_drp_font')) : 'inherit'); ?>" class=""></td>
         </tr>
         <tr valign="top">
         <td>Menu Dropdown Font Size : </td><td><input size="6" type="text" name="shift8_fullnav_drp_font_siz" value="<?php echo esc_attr( get_option('shift8_fullnav_drp_font_siz') ); ?>" /> (px)</td>
@@ -330,4 +294,15 @@ if (esc_attr( get_option('shift8_fullnav_enabled') ) == 'on') {
 // add search code to header if its switched on
 if (esc_attr( get_option('shift8_fullnav_search') ) == 'on') {
     add_action('wp_footer', 'add_shift8_search_dropdown', 1);
+}
+
+// clear the previous font choice options if the previous values are set
+if (esc_attr( get_option('shift8_fullnav_bar_font')) == 'Site default font') {
+    update_option('shift8_fullnav_bar_font', 'inherit');
+}
+if (esc_attr( get_option('shift8_fullnav_ovr_font')) == 'Site default font') {
+    update_option('shift8_fullnav_ovr_font', 'inherit');
+}
+if (esc_attr( get_option('shift8_fullnav_drp_font')) == 'Site default font') {
+    update_option('shift8_fullnav_drp_font', 'inherit');
 }

@@ -3,9 +3,9 @@
 // Load custom CSS and JS
 function shift8_fullnav_scripts() {
         // pop out nav
-        wp_enqueue_style( 'shift8-fullnav-style', plugin_dir_url(dirname(__FILE__)) . 'css/style.css');
+        wp_enqueue_style( 'shift8-fullnav-style', plugin_dir_url(dirname(__FILE__)) . 'css/style.css', array(), '1.61');
         wp_enqueue_script( 'shift8-fullnav-modern', plugin_dir_url(dirname(__FILE__)) . 'js/modernizr.js', array(), true );
-    	wp_enqueue_script( 'shift8_fullnav_main', plugin_dir_url(dirname(__FILE__)) . 'js/main.js', array(), true);
+    	wp_enqueue_script( 'shift8_fullnav_main', plugin_dir_url(dirname(__FILE__)) . 'js/main.js', array('jquery'), '1.61', true);
         // font awesome
         wp_enqueue_style( 'font-awesome-real', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 
@@ -15,6 +15,7 @@ function shift8_fullnav_scripts() {
 
         // Menu bar logo width
         $shift8_fullnav_logowidth = (esc_attr( get_option('shift8_fullnav_logowidth') ) ? esc_attr( get_option('shift8_fullnav_logowidth') ) : '150');
+        $shift8_fullnav_logowidth_mobile = (esc_attr( get_option('shift8_fullnav_logowidth_mobile') ) ? esc_attr( get_option('shift8_fullnav_logowidth_mobile') ) : '100');
 
         // Dropdown hover & colors
         $shift8_fullnav_drp_color = (esc_attr( get_option('shift8_fullnav_design_drp_bak') ) ? esc_attr( get_option('shift8_fullnav_design_drp_bak') ) : '#212121');
@@ -22,8 +23,9 @@ function shift8_fullnav_scripts() {
         $shift8_fullnav_drp_subcolor = (esc_attr( get_option('shift8_fullnav_design_drp_subbak') ) ? esc_attr( get_option('shift8_fullnav_design_drp_subbak') ) : '#212121');
         $shift8_fullnav_drp_subhover_color = (esc_attr( get_option('shift8_fullnav_design_drp_subhvr') ) ? esc_attr( get_option('shift8_fullnav_design_drp_subhvr') ) : '#3e3c3c');
 
-        // Content container top padding
+        // Content container top padding and bar height
         $shift8_fullnav_content_toppadding = ( esc_attr( get_option('shift8_fullnav_toppadding') ) ? esc_attr( get_option('shift8_fullnav_toppadding') ) . 'px' : 'inherit');
+        $shift8_fullnav_barheight = ( esc_attr( get_option('shift8_fullnav_barheight') ) ? esc_attr( get_option('shift8_fullnav_toppadding') ) : '80');
 
         // Search design options
         $shift8_fullnav_search_top = ( esc_attr( get_option('shift8_fullnav_search_top') ) ? esc_attr( get_option('shift8_fullnav_search_top') ) . 'px' : 'inherit');
@@ -34,23 +36,18 @@ function shift8_fullnav_scripts() {
         $shift8_fullnav_search_button_hover = (esc_attr( get_option('shift8_fullnav_search_button_hover') ) ? esc_attr( get_option('shift8_fullnav_search_button_hover') ) : '#000000');
         $shift8_fullnav_search_button_hover_font_col = (esc_attr( get_option('shift8_fullnav_search_button_hover_font_col') ) ? esc_attr( get_option('shift8_fullnav_search_button_hover_font_col') ) : '#fff');
 
-        // Load google fonts if necessary
-        $shift8_fullnav_bar_font = (esc_attr( get_option('shift8_fullnav_bar_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_bar_font') ), 2));
+        // Reference fonts if necessary
+        $shift8_fullnav_bar_font = (esc_attr( get_option('shift8_fullnav_bar_font') ) ? esc_attr( get_option('shift8_fullnav_bar_font')) : 'inherit');
         $shift8_fullnav_bar_font_color = (esc_attr( get_option('shift8_fullnav_bar_font_col') ) ? esc_attr( get_option('shift8_fullnav_bar_font_col') ) : 'inherit');
         $shift8_fullnav_bar_font_size = ( esc_attr( get_option('shift8_fullnav_bar_font_siz') ) ? esc_attr( get_option('shift8_fullnav_bar_font_siz') ) . 'px' : 'inherit');
 
-        $shift8_fullnav_ovr_font = (esc_attr( get_option('shift8_fullnav_ovr_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_ovr_font') ), 2));
+        $shift8_fullnav_ovr_font = (esc_attr( get_option('shift8_fullnav_ovr_font') ) ? esc_attr( get_option('shift8_fullnav_ovr_font')) : "inherit");
         $shift8_fullnav_ovr_font_color = (esc_attr( get_option('shift8_fullnav_ovr_font_col') ) ? esc_attr( get_option('shift8_fullnav_ovr_font_col') ) : 'inherit');
         $shift8_fullnav_ovr_font_size = ( esc_attr( get_option('shift8_fullnav_ovr_font_siz') ) ? esc_attr( get_option('shift8_fullnav_ovr_font_siz') ) . 'px' : 'inherit');
 
-        $shift8_fullnav_drp_font = (esc_attr( get_option('shift8_fullnav_drp_font') ) == "Site default font" ? "inherit" : explode(':', esc_attr( get_option('shift8_fullnav_drp_font') ), 2));
+        $shift8_fullnav_drp_font = (esc_attr( get_option('shift8_fullnav_drp_font') ) ? esc_attr( get_option('shift8_fullnav_drp_font')) : "inherit");
         $shift8_fullnav_drp_font_color = (esc_attr( get_option('shift8_fullnav_drp_font_col') ) ? esc_attr( get_option('shift8_fullnav_drp_font_col') ) : 'inherit');
         $shift8_fullnav_drp_font_size = ( esc_attr( get_option('shift8_fullnav_drp_font_siz') ) ? esc_attr( get_option('shift8_fullnav_drp_font_siz') ) . 'px' : 'inherit');
-
-        // Fix if its an array
-        $shift8_fullnav_bar_font = (is_array($shift8_fullnav_bar_font) ? "'" . $shift8_fullnav_bar_font[0] . "'" : $shift8_fullnav_bar_font);
-        $shift8_fullnav_ovr_font = (is_array($shift8_fullnav_ovr_font) ? "'" . $shift8_fullnav_ovr_font[0] . "'" : $shift8_fullnav_ovr_font);
-        $shift8_fullnav_drp_font = (is_array($shift8_fullnav_drp_font) ? "'" . $shift8_fullnav_drp_font[0] . "'" : $shift8_fullnav_drp_font);
 
         // Force mobile menu if option is enabled
         if (esc_attr( get_option('shift8_fullnav_mobilemode') ) == 'on') {
@@ -78,7 +75,7 @@ function shift8_fullnav_scripts() {
                         background-color: {$shift8_fullnav_ovr_color};
                 }
                 .fn-secondary-nav a, .fn-menu-text {
-                        font-family: {$shift8_fullnav_bar_font};
+                        font-family: '{$shift8_fullnav_bar_font}';
 			font-size: {$shift8_fullnav_bar_font_size};
                         color : {$shift8_fullnav_bar_font_color};
                 }
@@ -92,12 +89,12 @@ function shift8_fullnav_scripts() {
                         background-color: transparent;
                }
                 .fn-primary-nav a {
-                        font-family: {$shift8_fullnav_ovr_font};
+                        font-family: '{$shift8_fullnav_ovr_font}';
 			font-size: {$shift8_fullnav_ovr_font_size};
                         color : {$shift8_fullnav_ovr_font_color};
                 }
 		.fn-sub-menu a {
-			font-family: {$shift8_fullnav_drp_font};
+			font-family: '{$shift8_fullnav_drp_font}';
 			font-size: {$shift8_fullnav_drp_font_size};
 			color: {$shift8_fullnav_drp_font_color};
 		}
@@ -176,7 +173,7 @@ function shift8_fullnav_scripts() {
 		/* responsive */
 		@media only screen and (min-width: {$shift8_fullnav_mobilebreak}px) {
 			.fn-header {
-				height: 80px;
+				height: {$shift8_fullnav_barheight}px;
 				box-shadow: none;
 			}
 		}
@@ -196,7 +193,7 @@ function shift8_fullnav_scripts() {
 			}
 			.fn-header.is-fixed {
 				position: fixed;
-				top: -80px;
+				top: -{$shift8_fullnav_barheight}px;
 				-webkit-transition: -webkit-transform 0.3s;
 				-moz-transition: -moz-transform 0.3s;
 				transition: transform 0.3s;
@@ -220,7 +217,8 @@ function shift8_fullnav_scripts() {
 
 		@media only screen and (max-width: {$shift8_fullnav_mobilebreak}px) {
             .fn-logo {
-                max-width: 60%;
+                width: {$shift8_fullnav_logowidth_mobile}px;
+                height:auto;
             }
             .header-cart-count-mobile {
                 display: block;
@@ -282,23 +280,9 @@ function shift8_fullnav_scripts() {
 
         wp_add_inline_style( 'shift8-fullnav-style', $shift8_fullnav_custom_css );
 }
-/* Google Fonts */
-function shift8_fullnav_load_google_fonts() {
-        $shift8_bar_font = get_option('shift8_fullnav_bar_font');
-        $shift8_ovr_font = get_option('shift8_fullnav_ovr_font');
-
-        if ($shift8_bar_font != "Site default font") {
-                wp_enqueue_style( 'shift8-fullnav-bar-font', '//fonts.googleapis.com/css?family=' . $shift8_bar_font );
-        }
-        if ($shift8_ovr_font != "Site default font") {
-                wp_enqueue_style( 'shift8-fullnav-ovr-font', '//fonts.googleapis.com/css?family=' . $shift8_ovr_font );
-        }
-}
-
 // Enqueue scripts and styles if enabled
 if (esc_attr( get_option('shift8_fullnav_enabled') ) == 'on') {
         add_action( 'wp_enqueue_scripts', 'shift8_fullnav_scripts', 12,1 );
-        add_action( 'wp_print_styles', 'shift8_fullnav_load_google_fonts');
 }
 
 // Register admin scripts for custom fields

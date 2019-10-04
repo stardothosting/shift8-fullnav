@@ -257,37 +257,6 @@ function shift8_fullnav_get_image_id($image_url) {
         return $attachment[0];
 }
 
-// Function to get list of Google Fonts
-function shift8_get_google_fonts() {
-        $apikey = 'AIzaSyAc-nHc5ViyUFP_yLVIZMTcxb7qSq_JnhM';
-        $fontFile = plugin_dir_path( __FILE__ ) . 'cache/fonts.json';
-
-        //Total time the file will be cached in seconds, set to a week
-        $cachetime = 86400 * 7;
-        if(file_exists($fontFile) && $cachetime < filemtime($fontFile)) {
-                $content = json_decode(file_get_contents($fontFile));
-        } else {
-                $googleApi = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=' . $apikey;
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-                curl_setopt($ch, CURLOPT_HEADER, false);
-                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-                curl_setopt($ch, CURLOPT_URL, $googleApi);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-                $fontContent = curl_exec($ch);
-                curl_close($ch);
-                $fp = fopen($fontFile, 'w');
-                fwrite($fp, $fontContent);
-                fclose($fp);
-                $content = json_decode($fontContent);
-        }
-        if($amount == 'all') {
-                return $content->items;
-        } else {
-                return array_slice($content->items, 0, $amount);
-        }
-}
-
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
     /* update cart count when add to cart is clicked */
     add_filter( 'woocommerce_add_to_cart_fragments', 'shift8_cart_count_fragments', 10, 1 );

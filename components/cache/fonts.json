@@ -1,0 +1,14 @@
+{
+ "error": {
+  "errors": [
+   {
+    "domain": "usageLimits",
+    "reason": "accessNotConfigured",
+    "message": "Project 607695625765 has been scheduled for deletion and cannot be used for API calls. Visit https://console.developers.google.com/iam-admin/projects?pendingDeletion=true to undelete the project.",
+    "extendedHelp": "https://console.developers.google.com/iam-admin/projects?pendingDeletion=true"
+   }
+  ],
+  "code": 403,
+  "message": "Project 607695625765 has been scheduled for deletion and cannot be used for API calls. Visit https://console.developers.google.com/iam-admin/projects?pendingDeletion=true to undelete the project."
+ }
+}

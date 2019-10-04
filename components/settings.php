@@ -21,6 +21,7 @@ function register_shift8_fullnav_settings() {
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_navlocation' );
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_logo' );
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_logowidth' );
+    register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_logowidth_mobile' );
 
     // options for search bar 
 	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search' );
@@ -32,8 +33,9 @@ function register_shift8_fullnav_settings() {
 	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search_button_hover' );
 	register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_search_button_hover_font_col' );
 
-    // options for top padding for content
+    // options for top padding for content and menu bar height
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_toppadding' );
+    register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_barheight' );
 
     // options for menu fonts
     register_setting( 'shift8-fullnav-settings-group', 'shift8_fullnav_bar_font' );
