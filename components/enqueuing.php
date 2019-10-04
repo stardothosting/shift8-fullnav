@@ -25,7 +25,7 @@ function shift8_fullnav_scripts() {
 
         // Content container top padding and bar height
         $shift8_fullnav_content_toppadding = ( esc_attr( get_option('shift8_fullnav_toppadding') ) ? esc_attr( get_option('shift8_fullnav_toppadding') ) . 'px' : 'inherit');
-        $shift8_fullnav_barheight = ( esc_attr( get_option('shift8_fullnav_barheight') ) ? esc_attr( get_option('shift8_fullnav_toppadding') ) : '80');
+        $shift8_fullnav_barheight = ( esc_attr( get_option('shift8_fullnav_barheight') ) ? esc_attr( get_option('shift8_fullnav_barheight') ) : '80');
 
         // Search design options
         $shift8_fullnav_search_top = ( esc_attr( get_option('shift8_fullnav_search_top') ) ? esc_attr( get_option('shift8_fullnav_search_top') ) . 'px' : 'inherit');
