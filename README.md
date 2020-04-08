@@ -3,8 +3,8 @@
 * Donate link: https://www.shift8web.ca
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu,woocommerce,search
 * Requires at least: 3.0.1
-* Tested up to: 5.2.2
-* Stable tag: 1.62
+* Tested up to: 5.4
+* Stable tag: 1.63
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -276,3 +276,6 @@ p.
 
 ### 1.62
 * Fixed var name typo for bar height declaration
+
+### 1.63
+* Wordpress 5.4 compatibility
