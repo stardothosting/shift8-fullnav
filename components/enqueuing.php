@@ -10,8 +10,10 @@ function shift8_fullnav_scripts() {
         wp_enqueue_style( 'font-awesome-real', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 
         // Build inline style for menu based on administrative options chosen
-        $shift8_fullnav_bar_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_bar_col') ), $opacity = esc_attr( get_option('shift8_fullnav_design_bar_tra')));
-        $shift8_fullnav_ovr_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_ovr_col') ), $opacity = esc_attr( get_option('shift8_fullnav_design_ovr_tra')));
+        $shift8_fullnav_bar_opacity = (esc_attr( get_option('shift8_fullnav_design_bar_tra')) == '0' ? '0.0' : esc_attr( get_option('shift8_fullnav_design_bar_tra')));
+        $shift8_fullnav_bar_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_bar_col') ), $opacity = $shift8_fullnav_bar_opacity);
+        $shift8_fullnav_ovr_opacity = (esc_attr( get_option('shift8_fullnav_design_bar_tra')) == '0' ? '0.0' : esc_attr( get_option('shift8_fullnav_design_bar_tra')));
+        $shift8_fullnav_ovr_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_ovr_col') ), $opacity = $shift8_fullnav_ovr_opacity);
 
         // Menu bar logo width
         $shift8_fullnav_logowidth = (esc_attr( get_option('shift8_fullnav_logowidth') ) ? esc_attr( get_option('shift8_fullnav_logowidth') ) : '150');

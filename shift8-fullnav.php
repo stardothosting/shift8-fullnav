@@ -207,7 +207,7 @@ $plugin_name = $plugin_data['TextDomain'];
         <td>Menu Bar Color :</td><td><input type="text" name="shift8_fullnav_design_bar_col" value="<?php echo esc_attr( get_option('shift8_fullnav_design_bar_col') ); ?>" class="fullnav-color-field" data-default-color="#252525" /></td>
 	</tr>
 	<tr valign="top">
-        <td>Menu Bar Transparency : </td><td><div id="barTraFilter" style="background-color:<?php echo esc_attr( get_option('shift8_fullnav_design_bar_col') ); ?>"></div><div id="barTraSlider"><input id="barTra" type="range" name="shift8_fullnav_design_bar_tra" value="<?php echo esc_attr( get_option('shift8_fullnav_design_bar_tra') ); ?>" max="1.0" min="0" step="0.01"/></div></td>
+        <td>Menu Bar Transparency : </td><td><div id="barTraFilter" style="background-color:<?php echo esc_attr( get_option('shift8_fullnav_design_bar_col') ); ?>"></div><div id="barTraSlider"><input id="barTra" type="range" name="shift8_fullnav_design_bar_tra" value="<?php echo esc_attr( get_option('shift8_fullnav_design_bar_tra') ); ?>" max="1.0" min="0.0" step="0.01"/></div></td>
 	</tr>
 	<tr valign="top">
         <td>Overlay color : </td><td><input type="text" name="shift8_fullnav_design_ovr_col" value="<?php echo esc_attr( get_option('shift8_fullnav_design_ovr_col') ); ?>" class="fullnav-color-field" data-default-color="#252525" /></td>
