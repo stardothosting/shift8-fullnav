@@ -12,7 +12,7 @@ function shift8_fullnav_scripts() {
         // Build inline style for menu based on administrative options chosen
         $shift8_fullnav_bar_opacity = (esc_attr( get_option('shift8_fullnav_design_bar_tra')) == '0' ? '0.0' : esc_attr( get_option('shift8_fullnav_design_bar_tra')));
         $shift8_fullnav_bar_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_bar_col') ), $opacity = $shift8_fullnav_bar_opacity);
-        $shift8_fullnav_ovr_opacity = (esc_attr( get_option('shift8_fullnav_design_bar_tra')) == '0' ? '0.0' : esc_attr( get_option('shift8_fullnav_design_bar_tra')));
+        $shift8_fullnav_ovr_opacity = (esc_attr( get_option('shift8_fullnav_design_ovr_tra')) == '0' ? '0.0' : esc_attr( get_option('shift8_fullnav_design_ovr_tra')));
         $shift8_fullnav_ovr_color = hex2rgba(esc_attr( get_option('shift8_fullnav_design_ovr_col') ), $opacity = $shift8_fullnav_ovr_opacity);
 
         // Menu bar logo width

@@ -4,7 +4,7 @@
 * Tags: full screen nav,full screen navigation,sticky navigation,responsive nav menu,responsive menu,full screen menu,mobile menu,woocommerce,search
 * Requires at least: 3.0.1
 * Tested up to: 5.5
-* Stable tag: 1.65
+* Stable tag: 1.66
 * License: GPLv3
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -286,3 +286,6 @@ p.
 
 ### 1.65
 * Added class for main logo container
+
+### 1.65
+* Fixed bug with overlay transparency inheriting bar transparency setting instead
