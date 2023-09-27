@@ -158,7 +158,7 @@ function shift8_fullnav_scripts() {
             margin: 0 auto;
             padding: 15px 15px 12px 15px !important;
             font-weight: 600;
-            font-size: {$shit8_fullnav_search_button_font_siz};
+            font-size: {$shit8_fullnav_search_button_font_size};
             text-transform: uppercase !important;
             border-radius: 0px !important;
             margin: 0px !important;
