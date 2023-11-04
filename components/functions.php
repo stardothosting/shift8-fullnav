@@ -2,76 +2,75 @@
 
 // Inject menu system in header
 function add_shift8_fullnav_menu() {
-        $chosen_menu = esc_attr( get_option('shift8_fullnav_navlocation'));
-        // Build array from primary nav menu
-        $locations = get_theme_mod( 'nav_menu_locations' );
-        $shift8_fullnav_menu = array();
+    $chosen_menu = esc_attr(get_option('shift8_fullnav_navlocation'));
+    // Build array from primary nav menu
+    $locations = get_theme_mod('nav_menu_locations');
+    $shift8_fullnav_menu = array();
 
-        if (!empty($locations)) {
-            foreach ($locations as $menuValue => $locationId) {
-                if (has_nav_menu($locationId) && $menuValue == $chosen_menu) {
-	                $shift8_fullnav_menu = array(
-	                    'location_id' => $locationId,
-	                    'location_name' => $menuValue,
-					);
-                } else if (has_nav_menu($locationId)) {
-	                $shift8_fullnav_menu = array(
-	                    'location_id' => $locationId,
-	                    'location_name' => $menuValue,
-					);
-                }
+    if (!empty($locations)) {
+        foreach ($locations as $menuValue => $locationId) {
+            if (has_nav_menu($locationId) && $menuValue == $chosen_menu) {
+                $shift8_fullnav_menu = array(
+                    'location_id'   => $locationId,
+                    'location_name' => $menuValue,
+                );
+            } else if (has_nav_menu($locationId)) {
+                $shift8_fullnav_menu = array(
+                    'location_id'   => $locationId,
+                    'location_name' => $menuValue,
+                );
             }
         }
+    }
 
-        $menu_locations = get_nav_menu_locations();
-        $menu_id = $menu_locations[ $shift8_fullnav_menu ] ;
-        $menu_array = wp_get_nav_menu_items($menu_id);
+    $menu_locations = get_nav_menu_locations();
+    $menu_id = $menu_locations[$shift8_fullnav_menu['location_name']];
+    $menu_array = wp_get_nav_menu_items($menu_id);
 
-        if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-            $count = WC()->cart->cart_contents_count;
-            $shopping = '<a class="title header-cart-count-mobile" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . esc_html( $count ) . '</a>';
-			$trigger_class = 'fn-primary-nav-trigger-shop';
-        } else {
-			$shopping = null;
-			$trigger_class = null;
-		}
+    if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+        $count = WC()->cart->cart_contents_count;
+        $shopping = '<a class="title header-cart-count-mobile" href="' . WC()->cart->get_cart_url() . '"><i class="fa fa-shopping-cart">&nbsp;</i> ' . esc_html($count) . '</a>';
+        $trigger_class = 'fn-primary-nav-trigger-shop';
+    } else {
+        $shopping = null;
+        $trigger_class = null;
+    }
 
-        echo '<header class="fn-header is-visible is-fixed">
-        <div class="fn-logo"><a href="' . get_home_url() . '" class="fn-main-logo"><img src="' . esc_attr( get_option('shift8_fullnav_logo')) . '" alt="Logo"></a></div>
-		' . $shopping . '
+    echo '<header class="fn-header is-visible is-fixed">
+        <div class="fn-logo"><a href="' . get_home_url() . '" class="fn-main-logo"><img src="' . esc_attr(get_option('shift8_fullnav_logo')) . '" alt="Logo"></a></div>
+        ' . $shopping . '
         <a class="fn-primary-nav-trigger ' . $trigger_class . '" href="#0">
         <span class="fn-menu-text">Menu</span><span class="fn-menu-icon"></span>
         </a>';
 
-	$count = 0;
-	$submenu = false;
-	$first_level = $first_levels = $second_level = $second_levels = null;
+    $count = 0;
+    $submenu = false;
+    $first_level = $first_levels = $second_level = $second_levels = null;
 
     // Desktop Menu
-	wp_nav_menu( array(
-		'menu_id' => $shift8_fullnav_menu['location_id'],
-		'theme_location' => $shift8_fullnav_menu['location_name'],
-	    'container' => 'nav',
-        'container_class' => 'desktop-menu',
-        'menu_class' => 'fn-secondary-nav',
-        'items_wrap' => shift8_woocommerce_search_icon(),
-        'walker'          => new Shift8_Walker_Nav_Menu_Desktop()
-	 ));
+    wp_nav_menu(array(
+        'menu_id'          => $menu_id, // Use $menu_id instead
+        'theme_location'   => $shift8_fullnav_menu['location_name'], // Use the theme location
+        'container'        => 'nav',
+        'container_class'  => 'desktop-menu',
+        'menu_class'       => 'fn-secondary-nav',
+        'items_wrap'       => shift8_woocommerce_search_icon(),
+        'walker'           => new Shift8_Walker_Nav_Menu_Desktop()
+    ));
 
     echo '</header>';
 
-	// Mobile Menu
-    wp_nav_menu( array(
-		'menu_id' => $shift8_fullnav_menu['location_id'],
-		'theme_location' => $shift8_fullnav_menu['location_name'],
-        'container' => 'nav',
-        'container_class' => 'mobile-menu',
-        'menu_class' => 'fn-primary-nav',
-        //'depth' => '2',
-		'items_wrap' => shift8_mobile_social(),
-        'walker'          => new Shift8_Walker_Nav_Menu_Mobile()
+    // Mobile Menu
+    wp_nav_menu(array(
+        'menu_id'          => $menu_id, // Use $menu_id instead
+        'theme_location'   => $shift8_fullnav_menu['location_name'], // Use the theme location
+        'container'        => 'nav',
+        'container_class'  => 'mobile-menu',
+        'menu_class'       => 'fn-primary-nav',
+        // 'depth'            => '2',
+        'items_wrap'       => shift8_mobile_social(),
+        'walker'           => new Shift8_Walker_Nav_Menu_Mobile()
     ));
-
 }
 
 // Custom walker for desktop menu
