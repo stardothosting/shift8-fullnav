@@ -24,8 +24,18 @@ function add_shift8_fullnav_menu() {
     }
 
     $menu_locations = get_nav_menu_locations();
-    $menu_id = $menu_locations[$shift8_fullnav_menu['location_name']];
-    $menu_array = wp_get_nav_menu_items($menu_id);
+	// grab the theme_location string:
+	$theme_location = $shift8_fullnav_menu['location_name'];
+
+	// make sure it exists
+	if ( isset( $menu_locations[ $theme_location ] ) ) {
+	    $menu_id = $menu_locations[ $theme_location ];
+	    $menu_array = wp_get_nav_menu_items( $menu_id );
+	} else {
+	    // fallback: no menu assigned to that location
+	    $menu_array = [];
+	}
+
 
     if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
         $count = WC()->cart->cart_contents_count;
